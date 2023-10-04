@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".listfragment"
+    android:background="#dad7cd">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ListView
+
+        android:id="@+id/customlistView"
+        android:layout_width="match_parent"
+        android:layout_height="445dp"
+        android:layout_x="43dp"
+        android:layout_y="110dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        android:nestedScrollingEnabled="true"
+        android:padding="5dp"
+        android:scrollbars="none"
+
+        />
+
+
+</FrameLayout>
