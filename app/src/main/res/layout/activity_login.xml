@@ -10,25 +10,13 @@
     android:background="#dad7cd"
     tools:context=".login">
 
-    <TextView
-        android:id="@+id/signs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:padding="8dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="40dp"
+        app:cardElevation="10dp"
         android:background="@drawable/custom_edittext">
 
         <LinearLayout
@@ -43,19 +31,20 @@
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
                 android:text="Login "
                 android:textAlignment="textStart"
-                android:layout_marginBottom="0dp"
                 android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/loginTexts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:text="Please Sign In to continue"
                 android:textAlignment="textStart"
-                android:layout_marginBottom="20dp"
                 android:textColor="@color/black"
                 android:textSize="13dp"
                 android:textStyle="normal" />
@@ -65,10 +54,10 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:endIconMode="clear_text"
                 android:layout_x="59dp"
                 android:layout_y="37dp"
-                android:hint="Username">
+                android:hint="Username"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/usernames"
@@ -88,10 +77,10 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginTop="10dp"
                 android:layout_x="59dp"
                 android:layout_y="37dp"
                 android:hint="Password"
-                android:layout_marginTop="10dp"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
@@ -125,37 +114,36 @@
             </RelativeLayout>
 
 
-
-
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="160dp"
-        android:gravity="center">
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="normal"
+            android:text="Don't have an account?"
             android:textSize="15dp"
-            android:text="Don't have an account?" />
+            android:textStyle="normal" />
 
         <EditText
             android:id="@+id/anchor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Sign In"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="false"
+            android:text=" Sign In"
             android:textColor="#588157"
-            android:textSize="15dp"
-            android:background="@android:color/transparent" />/>
+            android:textSize="15dp" />/>
 
     </LinearLayout>
 
