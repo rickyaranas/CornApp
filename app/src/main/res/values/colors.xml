@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+        <color name="unselected_icon_color">#cbf3f0</color> <!-- Example unselected color (gray) -->
+        <color name="selected_icon_color">#2ec4b6</color>   <!-- Example selected color (red) -->
+    <color name="secondary">#FF03DAC5</color>
+    <color name="night_mode">#6124B1</color>
+    <color name="notification">#13B2C3</color>
+    <color name="private_account">#E6A326</color>
+    <color name="security">#D95F69</color>
 </resources>

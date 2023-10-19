@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
+    android:background="@drawable/home"
+    tools:context=".landingpage">
+
+
+    <TextView
+        android:id="@+id/t11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="65dp"
+        android:layout_y="50dp"
+        android:text="Welcome To ConrnApp"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="141dp"
+        android:layout_y="443dp"
+        android:text="CornApp"
+        android:textStyle="bold"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="62dp"
+        android:layout_y="95dp"
+        android:gravity="left|right"
+        android:text="Corn Disease Detection: Nurturing Healthy Harvests" />
+
+    <Button
+        android:id="@+id/signinC"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_x="80dp"
+        android:layout_y="620dp"
+        android:backgroundTint="#128C80"
+        android:text="SIGN UP"
+        android:textSize="15dp"
+        app:cornerRadius="20dp" />
+
+    <TextView
+        android:id="@+id/t111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="671dp"
+        android:text="Already have an Account?"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/landinganchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="179dp"
+        android:layout_y="695dp"
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
+        android:focusable="false"
+        android:text="Sign In"
+        android:textColor="#ffff"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="331dp"
+        android:layout_height="361dp"
+        android:layout_x="18dp"
+        android:layout_y="191dp"
+        app:srcCompat="@drawable/logo2" />
+
+
+</AbsoluteLayout>

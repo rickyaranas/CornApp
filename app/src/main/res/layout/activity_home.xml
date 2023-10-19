@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottomAppbar"
         android:layout_gravity="bottom"
-        android:backgroundTint="#588157"
+        android:backgroundTint="#ffff"
         app:fabCradleMargin="10dp"
 
         app:fabCradleRoundedCornerRadius="50dp"/>
@@ -34,7 +34,7 @@
         android:src="@drawable/ic_baseline_qr_code_scanner_24"
         app:layout_anchor="@id/bottomAppbar"
         app:maxImageSize="40dp"
-        app:tint="#588157"/>
+        app:tint="#2ec4b6"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavigationview"
@@ -46,7 +46,9 @@
         app:labelVisibilityMode="labeled"
         app:layout_anchor="@+id/bottomAppbar"
         app:layout_anchorGravity="center"
-        app:menu="@menu/bottom_menu" />
+        app:menu="@menu/bottom_menu"
+        app:itemIconTint="@color/bottom_nav"
+        app:itemTextColor="@color/black"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

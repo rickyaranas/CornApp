@@ -1,6 +1,7 @@
 package com.example.corn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,8 +34,16 @@ public class listfragment extends Fragment {
         CustomListAdapter adapter = new CustomListAdapter(getContext(), images, disease);
         customlistView.setAdapter(adapter);
 
+        customlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Handle item click here
+                openCustomActivity(position); // Call a method to open CustomActivity
+            }
+        });
+
         return view;
-//        return inflater.inflate(R.layout.fragment_listfragment, container, false);
+
 
 
     }
@@ -61,6 +71,14 @@ public class listfragment extends Fragment {
 
             return rowView;
         }
+    }
+    // Add a method to open the CustomActivity
+    private void openCustomActivity(int position) {
+        // Create an Intent to open the CustomActivity
+        Intent intent = new Intent(getContext(), customlistActivity.class);
+        // You can pass data to the CustomActivity if needed
+        intent.putExtra("disease_name", disease[position]);
+        startActivity(intent);
     }
 
 }
