@@ -20,20 +20,26 @@
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/ic_launcher_corn_background.xml" value="0.311" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/round.xml" value="0.2675" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/round_back.xml" value="0.2675" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/search_background.xml" value="0.3675" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/settings_back.xml" value="0.359" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/white_half_background.xml" value="0.3675" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/font/font.xml" value="0.3958333333333333" />
-        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_customlist.xml" value="0.3625" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_customlist.xml" value="0.1" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_landingpage.xml" value="0.3625" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_homefragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_infofragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_infofragment.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_listfragment.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_scan_.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_scanfragment.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/fragment_settingsfragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/list_item.xml" value="0.365625" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/slide_item_container.xml" value="0.1" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/view_popular.xml" value="0.5" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/viewholder_category.xml" value="0.3" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/menu/bottom_menu.xml" value="0.15" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/xml/colors.xml" value="0.3625" />
       </map>

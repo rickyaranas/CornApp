@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 public class customlistActivity extends AppCompatActivity {
-
+    ViewFlipper viewFlipper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,7 @@ public class customlistActivity extends AppCompatActivity {
         // For example, you can set it to a TextView in your layout
         TextView textView = findViewById(R.id.textView);
         textView.setText("Disease Name: " + diseaseName);
+        viewFlipper = findViewById(R.id.viewFlipper);
 
     }
 }
