@@ -6,21 +6,21 @@ public class PopularDomain implements Serializable {
     private String title;
     private String location;
     private String description;
-    private int bed;
-    private boolean guide;
-    private double score;
+//    private int bed;
+//    private boolean guide;
+//    private double score;
     private String pic;
-    private boolean wifi;
+//    private boolean wifi;
 
     public PopularDomain(String title, String location, String description, int bed, boolean guide, double score, String pic, boolean wifi) {
         this.title = title;
         this.location = location;
         this.description = description;
-        this.bed = bed;
-        this.guide = guide;
-        this.score = score;
+//        this.bed = bed;
+//        this.guide = guide;
+//        this.score = score;
         this.pic = pic;
-        this.wifi = wifi;
+//        this.wifi = wifi;
     }
 
     public String getTitle() {
@@ -47,29 +47,29 @@ public class PopularDomain implements Serializable {
         this.description = description;
     }
 
-    public int getBed() {
-        return bed;
-    }
-
-    public void setBed(int bed) {
-        this.bed = bed;
-    }
-
-    public boolean isGuide() {
-        return guide;
-    }
-
-    public void setGuide(boolean guide) {
-        this.guide = guide;
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
-    }
+//    public int getBed() {
+//        return bed;
+//    }
+//
+//    public void setBed(int bed) {
+//        this.bed = bed;
+//    }
+//
+//    public boolean isGuide() {
+//        return guide;
+//    }
+//
+//    public void setGuide(boolean guide) {
+//        this.guide = guide;
+//    }
+//
+//    public double getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(double score) {
+//        this.score = score;
+//    }
 
     public String getPic() {
         return pic;
@@ -79,11 +79,20 @@ public class PopularDomain implements Serializable {
         this.pic = pic;
     }
 
-    public boolean isWifi() {
-        return wifi;
+    public boolean isGuide() {
+        return false;
     }
 
-    public void setWifi(boolean wifi) {
-        this.wifi = wifi;
+    public boolean isWifi() {
+
+        return false;
     }
+
+//    public boolean isWifi() {
+//        return wifi;
+//    }
+//
+//    public void setWifi(boolean wifi) {
+//        this.wifi = wifi;
+//    }
 }

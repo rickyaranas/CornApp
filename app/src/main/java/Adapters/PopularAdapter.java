@@ -1,5 +1,6 @@
 package Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +18,19 @@ import com.example.corn.R;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import Activities.details;
 import Domains.PopularDomain;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
 
     ArrayList<PopularDomain> items;
-    DecimalFormat formatter;
+//    DecimalFormat formatter;
 
     public PopularAdapter(ArrayList<PopularDomain> items) {
         this.items = items;
-        formatter = new DecimalFormat("###, ###, ###, ###");
+//        formatter = new DecimalFormat("#,###.##");
     }
+
 
     @NonNull
     @Override
@@ -40,7 +43,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
         holder.titleTxt.setText(items.get(position).getTitle());
-        holder.locationTxt.setText(items.get(position).getTitle());
+        holder.locationTxt.setText(items.get(position).getLocation());
 
         int drawableResId = holder.itemView.getResources().getIdentifier(items.get(position).getPic()
                 , "drawable", holder.itemView.getContext().getPackageName());
@@ -48,10 +51,15 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         Glide.with(holder.itemView.getContext()).load(drawableResId)
                 .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
                 .into(holder.pic);
+        holder.itemView.setOnClickListener(v -> {
+                Intent intent=new Intent(holder.itemView.getContext(), Activities.details.class);
+                intent.putExtra("object",items.get(position));
+                holder.itemView.getContext().startActivity(intent);
+        });
 
     }
 
-    @Override
+
     public int getItemCount() {
         return items.size();
     }
