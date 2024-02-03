@@ -28,8 +28,9 @@ public class infofragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_infofragment, container, false);
 
         recyclerViewPopular = rootView.findViewById(R.id.view_pop);
-        recyclerViewCategory = rootView.findViewById(R.id.view_cat);
+        //recyclerViewCategory = rootView.findViewById(R.id.view_cat);
          initRecyclerView();
+
 
 
         return rootView;
@@ -38,29 +39,29 @@ public class infofragment extends Fragment {
 
     private void initRecyclerView() {
         ArrayList<PopularDomain> items = new ArrayList<>();
-        items.add(new PopularDomain("Common Rust", "Left", "is a foliar disease of corn favored by moist and cool conditions. The fungal pathogen does not overwinter in the Corn Belt;" +
+        items.add(new PopularDomain("Common Rust", "Bohol", "is a foliar disease of corn favored by moist and cool conditions. The fungal pathogen does not overwinter in the Corn Belt;" +
                 " windblown spores bring it north from the Southern U.S. Common rust is less likely to" +
-                " cause significant yield loss than southern rust.",2, true, 4.8, "pic1", true));
-        items.add(new PopularDomain("Northern Leaf Blight", "Right", "Northern corn leaf blight (NCLB) or Turcicum leaf blight (TLB) is a foliar disease of corn caused by Exserohilum turcicum, the anamorph of the ascomycete Setosphaeria turcica. With its " +
+                " cause significant yield loss than southern rust.",2, true, 4.8, "common_rust", true));
+        items.add(new PopularDomain(" Leaf Blight", "Bohol", "Northern corn leaf blight (NCLB) or Turcicum leaf blight (TLB) is a foliar disease of corn caused by Exserohilum turcicum, the anamorph of the ascomycete Setosphaeria turcica. With its " +
                 "characteristic cigar-shaped lesions, this disease can cause significant yield loss in susceptible " +
-                "corn hybrids.",1, true, 4.8, "pic2", true));
-        items.add(new PopularDomain("Edwin Gwapo", "Center", "edwin povadora 1",2, true, 4.8, "pic3", true));
+                "corn hybrids.",1, true, 4.8, "leaf_blight", true));
+        items.add(new PopularDomain("Gray Leaf Spot", "Bohol", "caused by the fungus Cercospora zeae-maydis, occurs virtually every growing season. If conditions favor disease development, economic losses can occur. Symptoms first appear on lower leaves about two to three weeks before tasseling.",2, true, 4.8, "leaf_spot", true));
 
 
         recyclerViewPopular.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         adapterPopular = new PopularAdapter(items);
         recyclerViewPopular.setAdapter(adapterPopular);
 
-        ArrayList<CategoryDomain> catlist = new ArrayList<>();
-
-        catlist.add(new CategoryDomain("Disease1","cat1"));
-        catlist.add(new CategoryDomain("Disease2","cat2"));
-        catlist.add(new CategoryDomain("Disease3","cat3"));
-        catlist.add(new CategoryDomain("Disease4","cat4"));
-
-        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapterCategory = new category_Adapters(catlist);
-        recyclerViewCategory.setAdapter(adapterCategory);
+//        ArrayList<CategoryDomain> catlist = new ArrayList<>();
+//
+//        catlist.add(new CategoryDomain("Disease1","cat1"));
+//        catlist.add(new CategoryDomain("Disease2","cat2"));
+//        catlist.add(new CategoryDomain("Disease3","cat3"));
+//        catlist.add(new CategoryDomain("Disease4","cat4"));
+//
+//        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+//        adapterCategory = new category_Adapters(catlist);
+//        recyclerViewCategory.setAdapter(adapterCategory);
 
 
 
