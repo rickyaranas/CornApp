@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -27,6 +26,7 @@
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/settings_back.xml" value="0.359" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/drawable/white_half_background.xml" value="0.3675" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/font/font.xml" value="0.3958333333333333" />
+        <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_about_us.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_customlist.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_details.xml" value="0.33" />
         <entry key="..\:/Users/RICKY/AndroidStudioProjects/corn/app/src/main/res/layout/activity_home.xml" value="0.33" />
@@ -49,7 +49,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

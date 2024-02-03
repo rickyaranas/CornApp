@@ -26,6 +26,33 @@
             android:layout_x="151dp"
             android:layout_y="52dp"
             android:text="TextView" />
+        <TextView
+            android:id="@+id/severity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="50dp"
+            android:layout_x="151dp"
+            android:layout_y="52dp"
+            android:text="Disease Severity Level:" />
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="80dp"
+            android:layout_x="151dp"
+            android:layout_y="52dp"
+            android:text="Location :" />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="100dp"
+            android:layout_x="151dp"
+            android:layout_y="52dp"
+            android:text="Date :" />
 
         <ImageView
             android:id="@+id/imageView"
