@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Activities.details">
+    tools:context="Activities.localfarms">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     app:srcCompat="@drawable/back_btn" />
 
                 <ImageView
-                    android:id="@+id/imageView12"
+                    android:id="@+id/locbtn"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="328dp"
@@ -53,7 +53,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/backbtn"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/about" />
+                    app:srcCompat="@drawable/loc1" />
 
                 <TextView
                     android:id="@+id/titletext"
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/language" />
+                    app:srcCompat="@drawable/location" />
 
                 <TextView
                     android:id="@+id/locationtxt"
@@ -107,14 +107,6 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/about" />
 
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="OUT OF ORDER "
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -131,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginStart="32dp"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="@color/black"
                 android:text="DESCRIPTION" />
             <TextView
@@ -144,7 +136,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
-                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -153,23 +145,23 @@
                 android:layout_marginEnd="32dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:text="CORNJEMA" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView16"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:text="CORNJEMA" />-->
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"
-                    android:layout_width="wrap_content"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#60b49c"
-                    style="@android:style/Widget.Button"
-                    android:text="BUTTON" />
+                    android:text="VISIT" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

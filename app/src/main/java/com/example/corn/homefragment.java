@@ -2,13 +2,14 @@ package com.example.corn;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class homefragment extends Fragment {
@@ -26,10 +27,19 @@ public class homefragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(), Scan_Fragment.class); // Replace ScanFragment with the actual class name
-//                startActivity(intent);
-          }
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//                // Begin a FragmentTransaction
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//
+//                // Replace the current fragment with ScanFragment
+//                transaction.replace(R.id.scanfragment, new scanfragment());
+//
+//                // Commit the transaction
+//                transaction.commit();
+            }
         });
+
 
         return view;
     }

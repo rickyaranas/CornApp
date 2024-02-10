@@ -28,7 +28,7 @@ public class infofragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_infofragment, container, false);
 
         recyclerViewPopular = rootView.findViewById(R.id.view_pop);
-        //recyclerViewCategory = rootView.findViewById(R.id.view_cat);
+        recyclerViewCategory = rootView.findViewById(R.id.view_cat);
          initRecyclerView();
 
 
@@ -52,16 +52,42 @@ public class infofragment extends Fragment {
         adapterPopular = new PopularAdapter(items);
         recyclerViewPopular.setAdapter(adapterPopular);
 
-//        ArrayList<CategoryDomain> catlist = new ArrayList<>();
-//
-//        catlist.add(new CategoryDomain("Disease1","cat1"));
-//        catlist.add(new CategoryDomain("Disease2","cat2"));
-//        catlist.add(new CategoryDomain("Disease3","cat3"));
-//        catlist.add(new CategoryDomain("Disease4","cat4"));
-//
-//        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-//        adapterCategory = new category_Adapters(catlist);
-//        recyclerViewCategory.setAdapter(adapterCategory);
+        ArrayList<CategoryDomain> catlist = new ArrayList<>();
+
+        catlist.add(new CategoryDomain("Sagbayan","sagbayan","Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.","V3JF+2X4, Sta. Catalina, Sagbayan, 6331 Bohol"));
+        catlist.add(new CategoryDomain("Carmen","cat2", "Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.","Q5R5+54X, Loay Interior Road, Batuan, Bohol"));
+        catlist.add(new CategoryDomain("Bilar","cat3", "Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.", "Bilar"));
+        catlist.add(new CategoryDomain("Valencia","cat4", "Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.","J665+3V9, Valencia, Bohol"));
+        catlist.add(new CategoryDomain("Garcia","cat4", "Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.","J665+3V9, Valencia, Bohol"));
+        catlist.add(new CategoryDomain("Ubay","cat4", "Visit the farms for an immersive experience " +
+                "into the world of corn cultivation. Explore the lush fields, witness the meticulous care given to each stalk, and" +
+                " learn about the journey from seed to harvest. Discover the secrets of sustainable farming practices and indulge" +
+                " in the fresh aroma of golden corn as you stroll through " +
+                "our local farms. Come, embrace the essence of agriculture and connect with nature at our corn farms today.","J665+3V9, Valencia, Bohol"));
+
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapterCategory = new category_Adapters(catlist);
+        recyclerViewCategory.setAdapter(adapterCategory);
 
 
 

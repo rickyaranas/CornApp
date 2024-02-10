@@ -10,11 +10,25 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_corn"
-        android:label=""
+        android:label="Corn Scanner"
         android:roundIcon="@mipmap/ic_launcher_corn"
         android:supportsRtl="true"
         android:theme="@style/Theme.Corn"
         tools:targetApi="31">
+        <activity
+            android:name="Activities.localfarms"
+            android:exported="false" />
+        <activity
+            android:name=".maps"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC5hi7uRHk7TrTTU_1QFMkXvpGuRchlUHw" />
+
+        <activity
+            android:name=".map"
+            android:exported="false" />
         <activity
             android:name="Activities.about_us"
             android:exported="false" />
@@ -28,7 +42,6 @@
         <activity
             android:name=".landingpage"
             android:exported="false" />
-
         <activity
             android:name=".SplashScreen"
             android:exported="true"

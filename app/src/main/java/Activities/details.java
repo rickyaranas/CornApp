@@ -31,16 +31,6 @@ public class details extends AppCompatActivity {
         titletext.setText(item.getTitle());
         desctxt.setText(item.getDescription());
 
-        if(item.isGuide()) {
-            guidetxt.setText("Guide");
-        }else{
-            guidetxt.setText("no guide");
-        }
-        if(item.isWifi()) {
-            wifitxt.setText("Wifi");
-        }else{
-            wifitxt.setText("no wifi");
-        }
         int drawableResId = getResources().getIdentifier(item.getPic(), "drawable", getPackageName());
 
         Glide.with(this)
@@ -53,12 +43,8 @@ public class details extends AppCompatActivity {
 
     private void initView() {
             titletext = findViewById(R.id.titletext);
-       // titletxt=findViewById(R.id.titleTxt);
-        desctxt=findViewById(R.id.desctxt);
-        bedtxt = findViewById(R.id.bedtxt);
-        guidetxt=findViewById(R.id.guidetxt);
-        wifitxt=findViewById(R.id.wifitxt);
-        picImg=findViewById(R.id.picImg);
-        backbtn=findViewById(R.id.backbtn);
+            desctxt=findViewById(R.id.desctxt);
+            picImg=findViewById(R.id.picImg);
+            backbtn=findViewById(R.id.backbtn);
     }
 }
