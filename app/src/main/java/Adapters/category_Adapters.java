@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.corn.R;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class category_Adapters extends RecyclerView.Adapter<category_Adapters.Vi
 
     Glide.with(holder.itemView.getContext())
             .load(drawableResourceId)
+            .override(Target.SIZE_ORIGINAL)
             .into(holder.picImgl);
     holder.itemView.setOnClickListener(v -> {
             Intent intent=new Intent(holder.itemView.getContext(), Activities.localfarms.class);

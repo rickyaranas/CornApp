@@ -9,10 +9,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="364dp"
         android:layout_height="148dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="555dp"
-        android:layout_x="11dp"
-        android:layout_y="16dp"
+        android:layout_gravity="center"
+        android:layout_x="12dp"
+        android:layout_y="18dp"
         android:background="@drawable/custom_edittext"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp">
@@ -23,9 +22,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
             android:layout_x="151dp"
             android:layout_y="52dp"
+
             android:text="TextView" />
+
         <TextView
             android:id="@+id/severity"
             android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
             android:layout_x="151dp"
             android:layout_y="52dp"
             android:text="Disease Severity Level:" />
+
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
@@ -44,6 +47,7 @@
             android:layout_x="151dp"
             android:layout_y="52dp"
             android:text="Location :" />
+
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"

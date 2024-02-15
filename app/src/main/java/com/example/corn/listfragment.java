@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 public class listfragment extends Fragment {
 
-    String [] disease = {"disease1","disease2"};
-    int [] images = {R.drawable.ic_baseline_account_circle_24, R.drawable.ic_baseline_home_24};
+    String [] disease = {"Corn Rust","Leaf Blight","Leaf Spot"};
+    int [] images = {R.drawable.common_rust, R.drawable.leaf_blight, R.drawable.leaf_spot};
 
     ListView customlistView;
     @Override

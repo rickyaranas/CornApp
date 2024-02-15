@@ -96,7 +96,7 @@
                     android:layout_marginStart="8dp"
 
                     android:layout_weight="1"
-                    android:text="EDWIN"
+                    android:text="Bohol"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
@@ -107,14 +107,14 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/about" />
 
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="OUT OF ORDER "
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView12"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="OUT OF ORDER "-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -131,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:text="DESCRIPTION" />
@@ -140,17 +141,49 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
                 android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
+
+
+            <TextView
+                android:id="@+id/display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="25dp"
+                android:background="?android:selectableItemBackground"
+
+
+                android:gravity="left"
+                android:text="Read More:"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <EditText
+                android:id="@+id/googleanchor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="25dp"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:focusable="false"
+                android:text="https://car.da.gov.ph/wp-content/uploads/2023/06/CORN-Pests-and-Diseases.pdf"
+                android:textColor="#128C80"
+                android:textSize="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -160,7 +193,7 @@
                     android:layout_weight="1"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:text="CORNJEMA" />
+                    android:text="ADDITIONAL IMAGES" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"
@@ -169,7 +202,7 @@
                     android:layout_weight="1"
                     android:background="#60b49c"
                     style="@android:style/Widget.Button"
-                    android:text="BUTTON" />
+                    android:text="Back" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
