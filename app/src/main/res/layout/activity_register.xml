@@ -150,12 +150,20 @@
         android:layout_width="122dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_x="46dp"
-        android:layout_y="591dp"
+        android:layout_x="49dp"
+        android:layout_y="590dp"
         android:backgroundTint="#128C80"
         android:text="Submit"
         android:textSize="15dp"
         app:cornerRadius="13dp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="185dp"
+        android:layout_y="590dp" />
 
 </AbsoluteLayout>
 

@@ -6,60 +6,119 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 
 public class register extends AppCompatActivity {
     Button signup;
+   EditText  TIfullname, TIemail, TIpassword, Tconfirmpass ;
     EditText anchor;
+    ProgressBar progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         signup = findViewById(R.id.signup);
         anchor = findViewById(R.id.anchor);
+        TIfullname = findViewById(R.id.fullname);
+        TIemail = findViewById(R.id.email);
+        TIpassword = findViewById(R.id.password);
+        progress=findViewById(R.id.progress);
+        Tconfirmpass=findViewById(R.id.confirmpass);
 
-        //Start ProgressBar first (Set visibility VISIBLE)
-        Handler handler = new Handler(Looper.getMainLooper());
-//        handler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                //Starting Write and Read data with URL
-//                //Creating array for parameters
-//                String[] field = new String[2];
-//                field[0] = "param-1";
-//                field[1] = "param-2";
-//                //Creating array for data
-//                String[] data = new String[2];
-//                data[0] = "data-1";
-//                data[1] = "data-2";
-//                PutData = new PutData("https://projects.vishnusivadas.com/AdvancedHttpURLConnection/putDataTest.php", "POST", field, data);
-//                if (putData.startPut()) {
-//                    if (putData.onComplete()) {
-//                        String result = putData.getResult();
-//                        //End ProgressBar (Set visibility to GONE)
-//                        Log.i("PutData", result);
-//
-//
-//                    }
-//                }
-//                //End Write and Read data with URL
-//            }
-//        });
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        progress.setVisibility(View.GONE);
+
+
+        signup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(register.this, home.class);
-                startActivity(intent);
+
+
+                final String fullname, email, password,confirmpass;
+                fullname = TIfullname.getText().toString();
+                email = TIemail.getText().toString();
+                password = TIpassword.getText().toString();
+                confirmpass = Tconfirmpass.getText().toString();
+
+                Log.d("EditTextDebug", "fullname: " + fullname);
+                Log.d("EditTextDebug", "email: " + email);
+                Log.d("EditTextDebug", "password: " + password);
+
+                if(!fullname.equals("") && !email.equals("") && !password.equals("")) {
+                    if (password.equals(confirmpass)) {
+
+                        progress.setVisibility(View.VISIBLE);
+
+                        Handler handler = new Handler();
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                String[] field = new String[3];
+                                field[0] = "fullname";
+                                field[1] = "email";
+                                field[2] = "password";
+
+                                Log.d("EditTextDebug", "fullname: " + field[0]);
+
+                                String[] data = new String[3];
+                                data[0] = fullname;
+                                data[1] = email;
+                                data[2] = password;
+
+                                Log.d("EditTextDebug", "fullname: " + data[0]);
+
+                                PutData putData = new PutData("http://192.168.100.9/LoginRegister/signup.php", "POST", field, data);
+
+                                if (putData.startPut()) {
+                                    if (putData.onComplete()) {
+                                        progress.setVisibility(View.GONE);
+                                        String result = putData.getResult();
+
+                                        Intent intent = new Intent(register.this, login.class);
+                                        startActivity(intent);
+
+                                        if (result.equals("Sign up Success")) {
+                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                            Log.i("PutData", result);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                            Log.d("EditTextDebug", "last: " + result);
+
+                                        }
+
+                                    }
+                                }
+                                //End Write and Read data with URL
+                            }
+                        });
+
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "The passwords aren't the same!", Toast.LENGTH_SHORT).show();
+                        Tconfirmpass.setError("Passwords do not match");
+                        Tconfirmpass.setText("");
+                    }
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
-        anchor.setOnClickListener(new View.OnClickListener() {
+        anchor.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(register.this, login.class);
