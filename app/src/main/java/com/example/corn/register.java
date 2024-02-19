@@ -87,12 +87,12 @@ public class register extends AppCompatActivity {
                                         progress.setVisibility(View.GONE);
                                         String result = putData.getResult();
 
-                                        Intent intent = new Intent(register.this, login.class);
-                                        startActivity(intent);
-
-                                        if (result.equals("Sign up Success")) {
+                                        if (result.equals("Sign Up Success")) {
                                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                             Log.i("PutData", result);
+                                            Intent intent = new Intent(getApplicationContext(), login.class);
+                                            startActivity(intent);
+
                                         } else {
                                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                             Log.d("EditTextDebug", "last: " + result);
