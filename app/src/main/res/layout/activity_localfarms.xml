@@ -42,7 +42,8 @@
                     android:layout_marginTop="32dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/back_btn" />
+                    app:srcCompat="@drawable/back_btn"
+                    app:tint="@android:color/black" />
 
                 <ImageView
                     android:id="@+id/locbtn"

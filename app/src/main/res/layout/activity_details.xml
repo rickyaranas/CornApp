@@ -59,7 +59,7 @@
                     android:id="@+id/titletext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/poppins_regular"
                     android:text="CORN DISEASE TYPE"
                     android:textColor="@color/white"
                     android:textSize="22dp"
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_weight="1"
                     android:text="Bohol"
                     android:textColor="@color/black"
@@ -133,6 +133,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="15dp"
                 android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="DESCRIPTION" />
             <TextView
@@ -144,6 +145,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
 
@@ -156,7 +158,7 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="25dp"
                 android:background="?android:selectableItemBackground"
-
+                android:fontFamily="@font/poppins_regular"
 
                 android:gravity="left"
                 android:text="Read More:"
@@ -173,6 +175,7 @@
                 android:layout_marginRight="25dp"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
+                android:fontFamily="@font/poppins_regular"
                 android:focusable="false"
                 android:text="https://car.da.gov.ph/wp-content/uploads/2023/06/CORN-Pests-and-Diseases.pdf"
                 android:textColor="#128C80"
@@ -192,17 +195,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/black"
                     android:text="ADDITIONAL IMAGES" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"
+                    style="@android:style/Widget.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#60b49c"
-                    style="@android:style/Widget.Button"
-                    android:text="Back" />
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="See More!" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

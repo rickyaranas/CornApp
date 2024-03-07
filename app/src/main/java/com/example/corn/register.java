@@ -80,24 +80,27 @@ public class register extends AppCompatActivity {
 
                                 Log.d("EditTextDebug", "fullname: " + data[0]);
 
-                                PutData putData = new PutData("http://192.168.100.9/LoginRegister/signup.php", "POST", field, data);
+                                PutData putData = new PutData("http://192.168.100.10/LoginRegister/signup.php", "POST", field, data);
 
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {
                                         progress.setVisibility(View.GONE);
+
                                         String result = putData.getResult();
 
-                                        if (result.equals("Sign Up Success")) {
+                                        if (result.contains("Sign Up Success")) {
                                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                             Log.i("PutData", result);
-                                            Intent intent = new Intent(getApplicationContext(), login.class);
-                                            startActivity(intent);
+                                            Intent ed = new Intent(getApplicationContext(),login.class);
+                                            startActivity(ed);
+
 
                                         } else {
                                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                             Log.d("EditTextDebug", "last: " + result);
 
-                                        }
+
+                                    }
 
                                     }
                                 }

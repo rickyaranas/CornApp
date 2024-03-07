@@ -58,7 +58,7 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/poppins_regular"
                     android:text="CORN DISEASE TYPE"
                     android:textColor="@color/black"
                     android:textSize="22dp"
@@ -75,7 +75,7 @@
                 android:id="@+id/loc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="10dp"
                 android:textSize="15dp"
@@ -85,7 +85,7 @@
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="32dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
@@ -94,7 +94,7 @@
                 android:id="@+id/weather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="32dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
@@ -105,7 +105,7 @@
                 android:id="@+id/severityC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="32dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
@@ -120,6 +120,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="DESCRIPTION" />
             <TextView
@@ -131,6 +132,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
                 android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
 
@@ -141,6 +143,7 @@
                 android:textStyle="bold"
                 android:layout_marginStart="32dp"
                 android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="Recommended Actions:" />
             <TextView
@@ -152,6 +155,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
                 android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="Use resistant hybrids. Fungicides may be warranted on inbreds for seed production during the early stages of this disease. Crop rotation and tillage practices may be helpful in some cases." />
 

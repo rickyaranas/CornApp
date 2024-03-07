@@ -4,6 +4,7 @@ import static android.os.Build.VERSION_CODES.O;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -33,8 +36,6 @@ public class login extends AppCompatActivity {
 
 
         loginC.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View view) {
 
@@ -55,28 +56,28 @@ public class login extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.100.9/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.100.10/LoginRegister/login.php", "POST", field, data);
 
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
 
                                     String result = putData.getResult();
 
+                                    if(result.contains("Successfully")) {
 
-                                    if(result.equals("Login Successfully")) {
-
-                                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),result+"asd",Toast.LENGTH_SHORT).show();
                                         Log.i("PutData", result);
+
                                         Intent intent = new Intent(getApplicationContext(), home.class);
                                         startActivity(intent);
+
+                                        Log.i("PutData", result);
+
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                         Log.d("EditTextDebug", "last: " + result);
                                     }
-
-
-
 
                                 }
                             }
@@ -86,7 +87,7 @@ public class login extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "wa gyapon", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "wa sud ag koan", Toast.LENGTH_SHORT).show();
                 }
             }
         });

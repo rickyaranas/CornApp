@@ -27,20 +27,20 @@ public class localfarms extends AppCompatActivity {
         setContentView(R.layout.activity_localfarms);
 
         initView();
-        setVariable();
+        setVariableC();
     }
 
-    private void setVariable() {
-        item = (CategoryDomain) getIntent().getSerializableExtra("object");
+    private void setVariableC() {
+        item = (CategoryDomain) getIntent().getSerializableExtra("category_object");
 
-        titletext.setText(item.getTitle());
+        titletext.setText(item.getMunicipality());
         desctxt.setText(item.getDescription());
-
-        int drawableResId = getResources().getIdentifier(item.getPic(), "drawable", getPackageName());
+        String imageUrl = "http://192.168.100.10/LoginRegister/images/local_farms/" + item.getLogo();
 
         Glide.with(this)
-                .load(drawableResId)
+                .load(imageUrl)
                 .into(picImg);
+
         backbtn.setOnClickListener(v -> finish());
 
       locbtn.setOnClickListener(new View.OnClickListener() {

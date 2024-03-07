@@ -19,6 +19,7 @@
         android:layout_x="223dp"
         android:layout_y="178dp"
         android:text="Sign Up "
+        android:fontFamily="@font/poppins_regular"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="30dp"
@@ -33,6 +34,7 @@
         android:layout_y="288dp"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="8dp"
+        android:fontFamily="@font/poppins_regular"
         android:ems="10"
         android:hint="Enter your Name"
         android:inputType="textEmailAddress" />
@@ -73,6 +75,7 @@
         android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Enter your password"
+        android:fontFamily="@font/poppins_regular"
         android:inputType="textPassword"
         app:endIconMode="password_toggle" />
 
@@ -83,6 +86,7 @@
         android:layout_x="49dp"
         android:layout_y="504dp"
         android:text="Confirm Password"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="#128C80"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -96,6 +100,7 @@
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="8dp"
         android:ems="10"
+        android:fontFamily="@font/poppins_regular"
         android:hint="Enter your password"
         android:inputType="textPassword"
         app:endIconMode="password_toggle" />
@@ -108,6 +113,7 @@
         android:layout_y="423dp"
         android:text="Password"
         android:textColor="#128C80"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -120,6 +126,7 @@
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="8dp"
         android:ems="10"
+        android:fontFamily="@font/poppins_regular"
         android:hint="Enter your email"
         android:inputType="textEmailAddress" />
 
@@ -131,6 +138,7 @@
         android:layout_y="345dp"
         android:text="Email"
         android:textColor="#128C80"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -142,6 +150,7 @@
         android:layout_y="268dp"
         android:text="Fullname"
         android:textColor="#128C80"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -154,6 +163,7 @@
         android:layout_y="590dp"
         android:backgroundTint="#128C80"
         android:text="Submit"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         app:cornerRadius="13dp" />
 

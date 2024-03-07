@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.corn.R;
 
+import Domains.CategoryDomain;
 import Domains.PopularDomain;
 
 public class details extends AppCompatActivity {
@@ -36,13 +37,13 @@ public class details extends AppCompatActivity {
     private void setVariable() {
         item = (PopularDomain) getIntent().getSerializableExtra("object");
 
-        titletext.setText(item.getTitle());
+        titletext.setText(item.getDisease_name());
         desctxt.setText(item.getDescription());
 
-        int drawableResId = getResources().getIdentifier(item.getPic(), "drawable", getPackageName());
+        String imageUrl = "http://192.168.100.10/LoginRegister/images/disease_images/" + item.getPic();
 
         Glide.with(this)
-                .load(drawableResId)
+                .load(imageUrl)
                 .into(picImg);
         backbtn.setOnClickListener(v -> finish());
 

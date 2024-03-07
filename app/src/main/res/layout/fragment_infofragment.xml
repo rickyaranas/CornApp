@@ -43,6 +43,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Welcome Back"
+                            android:fontFamily="@font/poppins_regular"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +59,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="19dp"
                             android:text="EDWIN POVADORA"
+                            android:fontFamily="@font/poppins_regular"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +76,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="5dp"
                         android:text="Scan Your Way to Success"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white"
                         android:textSize="28dp"
                         android:textStyle="bold" />

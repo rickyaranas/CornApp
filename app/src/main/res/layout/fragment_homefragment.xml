@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,9 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="370dp"
-        android:layout_height="600dp"
+        android:layout_height="628dp"
         android:layout_gravity="center"
-        android:layout_marginTop="0dp"
         android:layout_x="12dp"
         android:layout_y="85dp"
         android:background="@drawable/custom_edittext"
@@ -21,10 +20,11 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="252dp"
+            android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="Hi! Welcome farmers"
             android:textColor="@color/black"
             android:textSize="25dp" />
@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="60dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="  Turn your Android Phone into a Mobile Crop Doctor?"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -66,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="100dp"
-                android:text="  Turn your Android Phone into a Mobile Crop Doctor?"
+                android:fontFamily="@font/poppins_regular"
+                android:text="  CornConnect: Where Grain Meets Gain "
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -76,7 +78,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="140dp"
-                android:text="  Turn your Android Phone into a Mobile Crop Doctor?"
+                android:fontFamily="@font/poppins_regular"
+                android:text="  CornCompanion Collective: Journeying Together to Financial Abundance!"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -98,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Heal Your Crop!"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -151,6 +155,7 @@
                 android:layout_marginTop="120dp"
                 android:backgroundTint="#128C80"
                 android:drawableLeft="@drawable/ic_baseline_camera_24"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Take a picture"
                 android:textSize="15dp"
                 app:cornerRadius="10dp" />
@@ -167,10 +172,13 @@
         android:layout_height="wrap_content"
         android:layout_x="34dp"
         android:layout_y="37dp"
-        android:text="CORN APP"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="CORN APP SCANNER"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold" />
 
 
-</AbsoluteLayout>
+</FrameLayout>

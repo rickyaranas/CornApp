@@ -29,10 +29,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC5hi7uRHk7TrTTU_1QFMkXvpGuRchlUHw" />
-
-        <activity
-            android:name="com.example.corn.about_us"
-            android:exported="false" />
         <activity
             android:name="Activities.details"
             android:exported="false"
@@ -61,7 +57,7 @@
             android:exported="false" />
         <activity
             android:name=".login"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>

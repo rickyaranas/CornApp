@@ -13,13 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
-import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.corn.R;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import Activities.details;
 import Domains.PopularDomain;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
@@ -43,19 +41,31 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
-        holder.titleTxt.setText(items.get(position).getTitle());
+        holder.titleTxt.setText(items.get(position).getDisease_name());
         holder.locationTxt.setText(items.get(position).getLocation());
 
-        int drawableResId = holder.itemView.getResources().getIdentifier(items.get(position).getPic()
-                , "drawable", holder.itemView.getContext().getPackageName());
+//        int drawableResId = holder.itemView.getResources().getIdentifier(items.get(position).getPic()
+//                , "http://192.168.100.10/LoginRegister/images/", holder.itemView.getContext().getPackageName());
+//
+//        Glide.with(holder.itemView.getContext()).load(drawableResId)
+//                .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
+//                .into(holder.pic);
+//        holder.itemView.setOnClickListener(v -> {
+//            Intent intent=new Intent(holder.itemView.getContext(), Activities.details.class);
+//            intent.putExtra("object",items.get(position));
+//            holder.itemView.getContext().startActivity(intent);
 
-        Glide.with(holder.itemView.getContext()).load(drawableResId)
-                .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
+        String imageUrl = "http://192.168.100.10/LoginRegister/images/disease_images/" + items.get(position).getPic();
+        Glide.with(holder.titleTxt.getContext())
+                .load(imageUrl)
+                .transform(new CenterCrop(), new RoundedCorners(40))
                 .into(holder.pic);
+
         holder.itemView.setOnClickListener(v -> {
-                Intent intent=new Intent(holder.itemView.getContext(), Activities.details.class);
-                intent.putExtra("object",items.get(position));
-                holder.itemView.getContext().startActivity(intent);
+            Intent intent = new Intent(holder.itemView.getContext(), Activities.details.class);
+            intent.putExtra("object", items.get(position));
+            intent.putExtra("image_url", items.get(position));
+            holder.itemView.getContext().startActivity(intent);
         });
 
     }

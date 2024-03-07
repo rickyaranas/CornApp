@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.target.Target;
 import com.example.corn.R;
 
@@ -37,19 +39,30 @@ public class category_Adapters extends RecyclerView.Adapter<category_Adapters.Vi
 
     @Override
     public void onBindViewHolder(@NonNull category_Adapters.ViewHolders holder, int position) {
-    holder.titleTxt.setText(items.get(position).getTitle());
+    holder.titleTxt.setText(items.get(position).getMunicipality());
 
 
-    int drawableResourceId = holder.itemView.getResources().getIdentifier(items.get(position).getPicPath()
-            , "drawable", holder.itemView.getContext().getPackageName());
-
-    Glide.with(holder.itemView.getContext())
-            .load(drawableResourceId)
+//    int drawableResourceId = holder.itemView.getResources().getIdentifier(items.get(position).getPicPath()
+//            , "drawable", holder.itemView.getContext().getPackageName());
+//
+//    Glide.with(holder.itemView.getContext())
+//            .load(drawableResourceId)
+//            .override(Target.SIZE_ORIGINAL)
+//            .into(holder.picImgl);
+//    holder.itemView.setOnClickListener(v -> {
+//            Intent intent=new Intent(holder.itemView.getContext(), Activities.localfarms.class);
+//            intent.putExtra("object", items.get(position));
+//            holder.itemView.getContext().startActivity(intent);
+        String imageUrl = "http://192.168.100.10/LoginRegister/images/local_farms/" + items.get(position).getLogo();
+        Glide.with(holder.itemView.getContext())
+            .load(imageUrl)
             .override(Target.SIZE_ORIGINAL)
             .into(holder.picImgl);
-    holder.itemView.setOnClickListener(v -> {
-            Intent intent=new Intent(holder.itemView.getContext(), Activities.localfarms.class);
-            intent.putExtra("object", items.get(position));
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Activities.localfarms.class);
+            intent.putExtra("category_object", items.get(position));
+            intent.putExtra("category_image_url", items.get(position));
             holder.itemView.getContext().startActivity(intent);
         });
 

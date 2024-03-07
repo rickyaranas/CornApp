@@ -27,13 +27,19 @@ public class homefragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                Fragment newFragment = new Scan_Fragment();
+//
+//                // Get the FragmentManager
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
 //
 //                // Begin a FragmentTransaction
 //                FragmentTransaction transaction = fragmentManager.beginTransaction();
 //
-//                // Replace the current fragment with ScanFragment
-//                transaction.replace(R.id.scanfragment, new scanfragment());
+//                // Replace the current fragment with the new fragment
+//                transaction.replace(R.id.scan_fragment, newFragment);
+//
+//                // Add the transaction to the back stack
+//                transaction.addToBackStack(null);
 //
 //                // Commit the transaction
 //                transaction.commit();

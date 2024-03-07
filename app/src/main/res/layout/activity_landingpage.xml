@@ -4,47 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_x="0dp"
-    android:layout_y="0dp"
     android:background="@drawable/homes"
     tools:context=".landingpage">
-
 
     <Button
         android:id="@+id/signinC"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:layout_x="83dp"
-        android:layout_y="341dp"
+        android:layout_marginTop="364dp"
+        android:layout_x="91dp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_y="332dp"
         android:backgroundTint="#128C80"
         android:text="SIGN UP"
-        android:textSize="15dp"
-
-        app:cornerRadius="20dp" />
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/t111"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="125dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="5dp"
+        android:layout_x="91dp"
         android:layout_y="389dp"
+        android:fontFamily="@font/poppins_regular"
         android:text="Already have an Account?"
-        android:textSize="15dp" />
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signinC"
+        app:layout_constraintVertical_bias="0.01" />
 
     <EditText
         android:id="@+id/landinganchor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="187dp"
-        android:layout_y="410dp"
+        android:layout_x="287dp"
+        android:layout_y="389dp"
         android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:focusable="false"
-        android:text="Sign In"
-        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Click me"
+        android:textColor="#128C80"
         android:textSize="15dp"
-        android:textStyle="bold" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/t111"
+        app:layout_constraintTop_toBottomOf="@+id/signinC"
+        app:layout_constraintVertical_bias="0.01" />
 
 </AbsoluteLayout>
