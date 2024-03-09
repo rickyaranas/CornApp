@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="Activities.diseaselist_details"
+            android:exported="false" />
+        <activity
             android:name=".contactus"
             android:exported="false" />
         <activity
@@ -29,6 +32,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC5hi7uRHk7TrTTU_1QFMkXvpGuRchlUHw" />
+
         <activity
             android:name="Activities.details"
             android:exported="false"

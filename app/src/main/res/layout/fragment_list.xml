@@ -65,8 +65,8 @@
             android:id="@+id/textVisesw5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_regular"
             android:text="Detection Activity Logs"
             android:textColor="@color/black"
@@ -75,19 +75,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ListView
-
-            android:id="@+id/customlistView"
-            android:layout_width="377dp"
-            android:layout_height="342dp"
-            android:layout_marginTop="1dp"
-            android:layout_x="43dp"
-            android:layout_y="110dp"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="5.0sp"
-            android:nestedScrollingEnabled="true"
-            android:padding="5dp"
-            android:scrollbars="none"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
 
 
             app:cardCornerRadius="10dp"
@@ -96,7 +90,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textVisesw5"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.105" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

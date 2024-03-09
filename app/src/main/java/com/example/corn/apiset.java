@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Domains.CategoryDomain;
+import Domains.DiseaseList_Domain;
 import Domains.PopularDomain;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -17,6 +18,9 @@ public interface apiset {
     Call<ArrayList<PopularDomain>> getdata();
     @GET("local_farms_fetch.php")
     Call<ArrayList<CategoryDomain>> getCategoryData();
+    @GET("disease_list_fetch.php")
+    Call<ArrayList<DiseaseList_Domain>> getDiseaseData();
+
 
 
 }
