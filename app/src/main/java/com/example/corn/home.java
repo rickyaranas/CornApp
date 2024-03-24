@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.corn.databinding.ActivityHomeBinding;
@@ -17,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class home extends AppCompatActivity {
+
     ActivityHomeBinding binding;
     FloatingActionButton scanButton;
 
@@ -30,20 +32,13 @@ public class home extends AppCompatActivity {
         replaceFragment(new homefragment());
 
         scanButton = findViewById(R.id.scanButton);
-//        scanButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(), Scan_Fragment.class); // Replace ScanFragment with the actual class name
-//                startActivity(intent);
-//            }
-//        });
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment scanFragment = new Scan_Fragment(); // Replace ScanFragment with the actual class name
                 replaceFragment(scanFragment);
 
-                deselect();
+
 
             }
         });
@@ -81,12 +76,16 @@ public class home extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
-    public void deselect(){
+    public void deselect() {
         BottomNavigationView bottomNavigationView = binding.bottomnavigationview; // Replace with your ID
         Menu menu = bottomNavigationView.getMenu();
         for (int i = 0; i < menu.size(); i++) {
-            menu.getItem(i).setChecked(false); // Deselect all menu items
+            MenuItem item = menu.getItem(i);
+            if (!item.isChecked()) { // Only deselect if the item is not already selected
+                item.setChecked(false);
+            }
         }
+
     }
 
 }

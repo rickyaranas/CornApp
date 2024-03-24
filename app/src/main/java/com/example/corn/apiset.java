@@ -8,8 +8,10 @@ import java.util.List;
 import Domains.CategoryDomain;
 import Domains.DiseaseList_Domain;
 import Domains.PopularDomain;
+import Domains.ScannedDisease_Domain;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface apiset {
 
@@ -21,6 +23,8 @@ public interface apiset {
     @GET("disease_list_fetch.php")
     Call<ArrayList<DiseaseList_Domain>> getDiseaseData();
 
-
-
+//    @GET("fetch_data.php")
+//    Call<ArrayList<ScannedDisease_Domain>> getDisease();
+    @GET("fetch_data.php")
+    Call<ArrayList<ScannedDisease_Domain>> getDisease(@Query("id") String id);
 }

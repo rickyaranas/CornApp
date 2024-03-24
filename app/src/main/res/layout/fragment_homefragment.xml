@@ -147,18 +147,32 @@
                 android:layout_marginTop="60dp"
                 android:src="@drawable/health" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="64dp"
+            <ImageButton
+                android:id="@+id/to_camera"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="94dp"
                 android:layout_marginTop="120dp"
+                android:background="@drawable/camera_white"
                 android:backgroundTint="#128C80"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_baseline_camera_24"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Take a picture"
                 android:textSize="15dp"
                 app:cornerRadius="10dp" />
+
+            <ImageButton
+                android:id="@+id/togallery"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_above="@id/imageView2"
+
+                android:layout_marginLeft="164dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/gallery_white"
+                android:clickable="true" />
 
 
         </androidx.cardview.widget.CardView>

@@ -1,21 +1,29 @@
 package com.example.corn;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
+
+import java.io.IOException;
 
 
 public class register extends AppCompatActivity {
@@ -23,6 +31,11 @@ public class register extends AppCompatActivity {
    EditText  TIfullname, TIemail, TIpassword, Tconfirmpass ;
     EditText anchor;
     ProgressBar progress;
+    ImageView profile_pic;
+
+    Bitmap bitmap;
+    Bitmap reducedSize;
+    byte [] image;
 
 
     @Override
@@ -37,6 +50,7 @@ public class register extends AppCompatActivity {
         TIpassword = findViewById(R.id.password);
         progress=findViewById(R.id.progress);
         Tconfirmpass=findViewById(R.id.confirmpass);
+        profile_pic = findViewById(R.id.profile_pic);
 
 
         progress.setVisibility(View.GONE);
@@ -129,4 +143,54 @@ public class register extends AppCompatActivity {
             }
         });
     }
+
+    public void selectImage(View view) {
+
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, 2);
+    }
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+
+        if (resultCode == RESULT_OK) {
+
+            if (requestCode == 2) {
+
+                // Get the selected image and store it in a bitmap
+                Uri dat = data.getData();
+                try {
+                    // Locating the image path using URI and store the image in bitmap
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            reducedSize = reduceImageSize(bitmap,240,240);
+            profile_pic.setImageBitmap(reducedSize);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    public Bitmap reduceImageSize(Bitmap originalBitmap, int maxWidth, int maxHeight) {
+        int originalWidth = originalBitmap.getWidth();
+        int originalHeight = originalBitmap.getHeight();
+
+        // Calculate the correct scale size
+        float scale = Math.min(((float)maxWidth / originalWidth), ((float)maxHeight / originalHeight));
+
+        // Create a matrix for manipulation
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap with the same color model as the original bitmap, but scaled down.
+        Bitmap scaledBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalWidth, originalHeight, matrix, true);
+
+        return scaledBitmap;
+    }
+
+
+
 }
+

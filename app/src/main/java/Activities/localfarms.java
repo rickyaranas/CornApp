@@ -35,7 +35,7 @@ public class localfarms extends AppCompatActivity {
 
         titletext.setText(item.getMunicipality());
         desctxt.setText(item.getDescription());
-        String imageUrl = "http://192.168.100.10/LoginRegister/images/local_farms/" + item.getLogo();
+        String imageUrl = "http://192.168.100.8/LoginRegister/images/local_farms/" + item.getLogo();
 
         Glide.with(this)
                 .load(imageUrl)

@@ -56,7 +56,7 @@
             app:srcCompat="@drawable/location" />
 
         <TextView
-            android:id="@+id/locationTxt"
+            android:id="@+id/locationTxt_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -75,9 +75,9 @@
 
             android:textColor="@color/black"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/locationTxt"
+            app:layout_constraintBottom_toBottomOf="@+id/locationTxt_1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/locationTxt" />
+            app:layout_constraintTop_toTopOf="@+id/locationTxt_1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
