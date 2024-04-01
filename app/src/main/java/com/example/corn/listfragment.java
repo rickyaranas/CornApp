@@ -60,9 +60,9 @@ public class listfragment extends Fragment {
 //            }
 //        });
 
-        list_recycler = view.findViewById(R.id.list_recycler);
+                list_recycler = view.findViewById(R.id.list_recycler);
 
-        list_recycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
+                list_recycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
 
         processdata();
 

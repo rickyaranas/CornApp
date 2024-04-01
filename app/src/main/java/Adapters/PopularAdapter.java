@@ -43,18 +43,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.titleTxt.setText(items.get(position).getDisease_name());
         holder.locationTxt.setText(items.get(position).getLocation());
 
-//        int drawableResId = holder.itemView.getResources().getIdentifier(items.get(position).getPic()
-//                , "http://192.168.100.10/LoginRegister/images/", holder.itemView.getContext().getPackageName());
-//
-//        Glide.with(holder.itemView.getContext()).load(drawableResId)
-//                .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
-//                .into(holder.pic);
-//        holder.itemView.setOnClickListener(v -> {
-//            Intent intent=new Intent(holder.itemView.getContext(), Activities.details.class);
-//            intent.putExtra("object",items.get(position));
-//            holder.itemView.getContext().startActivity(intent);
-
-        String imageUrl = "http://192.168.100.8/LoginRegister/images/disease_images/" + items.get(position).getPic();
+        String imageUrl = "http://192.168.100.5/LoginRegister/images/disease_images/" + items.get(position).getPic();
         Glide.with(holder.titleTxt.getContext())
                 .load(imageUrl)
                 .transform(new CenterCrop(), new RoundedCorners(40))

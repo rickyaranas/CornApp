@@ -56,7 +56,7 @@ public class login extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.100.10/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.100.5/LoginRegister/login.php", "POST", field, data);
 
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
@@ -65,13 +65,19 @@ public class login extends AppCompatActivity {
 
                                     if(result.contains("Successfully")) {
 
-                                        Toast.makeText(getApplicationContext(),result+"asd",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),result+"",Toast.LENGTH_SHORT).show();
                                         Log.i("PutData", result);
 
+                                        String[] parts = result.split(":");
+                                        String successMessage = parts[0];
+                                        String userId = parts[1];
+
+                                        // Pass user ID to the next activity or fragment
                                         Intent intent = new Intent(getApplicationContext(), home.class);
+                                        intent.putExtra("userId", userId);
                                         startActivity(intent);
+                                        Log.i("User ID", userId);
 
-                                        Log.i("PutData", result);
 
                                     }
                                     else {

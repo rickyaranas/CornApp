@@ -40,7 +40,7 @@ public class details extends AppCompatActivity {
         titletext.setText(item.getDisease_name());
         desctxt.setText(item.getDescription());
 
-        String imageUrl = "http://192.168.100.8/LoginRegister/images/disease_images/" + item.getPic();
+        String imageUrl = "http://192.168.100.5/LoginRegister/images/disease_images/" + item.getPic();
 
         Glide.with(this)
                 .load(imageUrl)

@@ -10,18 +10,22 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,8 +36,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -46,18 +52,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 public class Detect extends AppCompatActivity {
 
     Button button;
     ImageView detectImage;
-    TextView prediction, titletxt, loc, description, rectxt;
+    TextView prediction, titletxt, loc, description, rectxt, dateTV;
     ScrollView scrollView;
     int imageSize = 640;
     Bitmap bitmap;
     private ScannedDisease_Domain item;
     Blob image;
     private Geocoder geocoder;
-
+    String userId, cityName;
+    String currentDate;
     YOLOv5TFLiteDetector yolOv5TFLiteDetector;
     Paint boxpaint = new Paint();
     Paint texpaint = new Paint();
@@ -82,14 +93,16 @@ public class Detect extends AppCompatActivity {
         loc = findViewById(R.id.locationTxt_1);
         description = findViewById(R.id.desctxt);
         rectxt = findViewById(R.id.rec_txt);
+        dateTV = findViewById(R.id.date_1);
 
         scrollView =findViewById(R.id.scroll_View);
         geocoder = new Geocoder(this);
 
+        userId = getIntent().getStringExtra("userID");
+
         yolOv5TFLiteDetector = new YOLOv5TFLiteDetector();
         yolOv5TFLiteDetector.setModelFile("best-fp16.tflite");
         yolOv5TFLiteDetector.initialModel(this);
-
 
         //for the bounding box
         boxpaint.setStrokeWidth(2);
@@ -138,15 +151,14 @@ public class Detect extends AppCompatActivity {
             bitmap = Bitmap.createScaledBitmap(bitmap,imageSize,imageSize,false);
         }
 
-        // Calling the predict function to process image and get results.
+
         predict();
-
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Detect.this, home.class);
+                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });
@@ -159,12 +171,11 @@ public class Detect extends AppCompatActivity {
         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         Canvas canvas = new Canvas(mutableBitmap);
         String Id = null;
-        String pestname = null;
         String confidence = null;
 
 
         for (Recognition recognition : recognitions) {
-            if (recognition.getConfidence() > 0.10
+            if (recognition.getConfidence() > 0.50
             ) {
                 RectF location = recognition.getLocation();
                 canvas.drawRect(location, boxpaint);
@@ -178,58 +189,112 @@ public class Detect extends AppCompatActivity {
                 int idInt = Integer.parseInt(Id);
                 idInt++; // Increment the id by 1
                 Id = String.valueOf(idInt);
-
-                String apiUrl = "http://192.168.100.8/LoginRegister/fetch_data.php?id=" + Id;
+                String apiUrl = "http://192.168.100.5/LoginRegister/fetch_data.php?id=" + Id;
                 Log.d("Generated URL", apiUrl); // Print the generated URL in Logcat
 
                 apiset apiService = apiController.getInstance().getapi();
                 Call<ArrayList<ScannedDisease_Domain>> call = apiService.getDisease(Id);
 
+                String finalConfidence = confidence;
                 call.enqueue(new Callback<ArrayList<ScannedDisease_Domain>>() {
                     @Override
                     public void onResponse(Call<ArrayList<ScannedDisease_Domain>> call, Response<ArrayList<ScannedDisease_Domain>> response) {
                         if (response.isSuccessful()) {
-                            // Handle successful response here
                             ArrayList<ScannedDisease_Domain> diseases = response.body();
 
-                            StringBuilder stringBuilder = new StringBuilder();
                             for (ScannedDisease_Domain disease : diseases) {
-                                // Append each fetched data to the StringBuilder
                                 TextView d = findViewById(R.id.d);
-//                            d.setText(stringBuilder.toString());
+                                d.setText(""+userId);
                                 titletxt.setText("Disease Name: " + disease.getDisease_name());
-                             //   loc.setText("Location: " + disease.getLocation());
                                 description.setText("" + disease.getDescription());
                                 rectxt.setText("" + disease.getTreatment());
-                            }
 
+                                Date date_1 = new Date();
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                currentDate = dateFormat.format(date_1);
+                                dateTV.setText("Date: "+currentDate);
+
+                                byte[] imageBytes = imageViewToBy(mutableBitmap);
+
+                                final String user_id, disease_name, location, date, image, confidence_d;
+                                user_id = d.getText().toString();
+                                disease_name = disease.getDisease_name();
+
+                                location = loc.getText().toString();
+                                date = currentDate;
+                                confidence_d = finalConfidence.toString();
+
+                                Handler handler = new Handler();
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        String[] field = new String[6];
+                                        field[0] = "user_id";
+                                        field[1] = "disease_name";
+                                        field[2] = "location";
+                                        field[3] = "date";
+                                        field[4] = "image_name";
+                                        field[5] = "confidence_level";
+
+                                        String[] data = new String[6];
+                                        data[0] = user_id;
+                                        data[1] = disease_name;
+                                        data[2] = location;
+                                        data[3] = date;
+                                        data[4] = Base64.encodeToString(imageBytes, Base64.DEFAULT);;
+                                        data[5] = finalConfidence;
+
+                                        Log.d("EditTextDebug", "fullname: " + data[0]+data[1]+data[2]+data[3]);
+                                        Log.d("edwin,","user_id: " + data[0]);
+                                        Log.d("edwin,","image_name: " + data[2]);
+                                        Log.d("edwin,","image_name: " + mutableBitmap);
+
+                                        PutData putData = new PutData("http://192.168.100.5/LoginRegister/madam.php", "POST", field, data);
+                                        if (putData.startPut()) {
+                                            if (putData.onComplete()) {
+                                                String result = putData.getResult();
+
+                                                if (result.contains("Sign Up Success")) {
+                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                    Log.i("PutData", result);
+//                                                    Intent ed = new Intent(getApplicationContext(),login.class);
+//                                                    startActivity(ed);
+
+
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                    Log.d("EditTextDebug", "last: " + result);
+                                                }
+
+                                            }
+                                        }
+
+                                    }
+                                });
+
+                            }
                             scrollView.scrollTo(0, 0);
                         } else {
-                            // Handle error response here
-                            // You can check response.errorBody() for more details
                         }
                     }
-
                     @Override
                     public void onFailure(Call<ArrayList<ScannedDisease_Domain>> call, Throwable t) {
                         // Handle failure here
                         t.printStackTrace();
                     }
                 });
-
-
                 try {
                     URL url = new URL(apiUrl);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
 
-                    // Handle the response (read data from the API if needed)
-
-                    // Close the connection
                     connection.disconnect();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+
+
             }
         }
 
@@ -267,8 +332,10 @@ public class Detect extends AppCompatActivity {
 
                                 Log.d("Location", "Latitude: " + latitude + ", Longitude: " + longitude);
                                 if (loc != null) {
-                                    loc.setText("Latitude: " + latitude + ", Longitude: " + longitude);
+                                    //loc.setText("Latitude: " + latitude + ", Longitude: " + longitude);
                                     reverseGeocode(latitude, longitude);
+                                    loc.setText(""+cityName);
+
                                 } else {
                                     Log.e("Location", "TextView 'loc' is null");
                                 }
@@ -281,7 +348,7 @@ public class Detect extends AppCompatActivity {
             Log.e("Location", "Permission ACCESS_FINE_LOCATION not granted");
         }
     }
-    private void reverseGeocode(double latitude, double longitude) {
+    public void reverseGeocode(double latitude, double longitude) {
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
             if (addresses != null && !addresses.isEmpty()) {
@@ -290,8 +357,9 @@ public class Detect extends AppCompatActivity {
                 if (baranggayName == null || baranggayName.isEmpty()) {
                     baranggayName = address.getLocality(); // Use city name as baranggay name
                 }
-                String cityName = address.getLocality(); // Get the city name
+                 cityName = address.getLocality(); // Get the city name
                 String countryName = address.getAdminArea(); // Get the country name
+                loc.setText(""+cityName);
 
                 // Display the address information in your app
                 Log.d("Address Info", "Baranggay: " + baranggayName + ", City: " + cityName + ", Country: " + countryName);
@@ -302,5 +370,11 @@ public class Detect extends AppCompatActivity {
             Log.e("Reverse Geocoding", "Error: " + e.getMessage());
         }
 
+    }
+    public static byte[] imageViewToBy(Bitmap mutableBitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        mutableBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        byte[] bytes = outputStream.toByteArray();
+        return bytes;
     }
     }

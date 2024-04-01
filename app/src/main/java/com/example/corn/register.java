@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 
@@ -35,7 +37,7 @@ public class register extends AppCompatActivity {
 
     Bitmap bitmap;
     Bitmap reducedSize;
-    byte [] image;
+
 
 
     @Override
@@ -66,6 +68,7 @@ public class register extends AppCompatActivity {
                 email = TIemail.getText().toString();
                 password = TIpassword.getText().toString();
                 confirmpass = Tconfirmpass.getText().toString();
+                byte [] image = imageViewToBy(bitmap);
 
                 Log.d("EditTextDebug", "fullname: " + fullname);
                 Log.d("EditTextDebug", "email: " + email);
@@ -80,21 +83,23 @@ public class register extends AppCompatActivity {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                String[] field = new String[3];
+                                String[] field = new String[4];
                                 field[0] = "fullname";
                                 field[1] = "email";
                                 field[2] = "password";
+                                field[3] = "user_image";
 
                                 Log.d("EditTextDebug", "fullname: " + field[0]);
 
-                                String[] data = new String[3];
+                                String[] data = new String[4];
                                 data[0] = fullname;
                                 data[1] = email;
                                 data[2] = password;
+                                data[3] =  Base64.encodeToString(image, Base64.DEFAULT);;
 
                                 Log.d("EditTextDebug", "fullname: " + data[0]);
 
-                                PutData putData = new PutData("http://192.168.100.10/LoginRegister/signup.php", "POST", field, data);
+                                PutData putData = new PutData("http://192.168.100.5/LoginRegister/signup.php", "POST", field, data);
 
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {
@@ -102,7 +107,7 @@ public class register extends AppCompatActivity {
 
                                         String result = putData.getResult();
 
-                                        if (result.contains("Sign Up Success")) {
+                                        if (result.contains("Successfully")) {
                                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                             Log.i("PutData", result);
                                             Intent ed = new Intent(getApplicationContext(),login.class);
@@ -168,9 +173,7 @@ public class register extends AppCompatActivity {
             reducedSize = reduceImageSize(bitmap,240,240);
             profile_pic.setImageBitmap(reducedSize);
         }
-
         super.onActivityResult(requestCode, resultCode, data);
-
     }
 
     public Bitmap reduceImageSize(Bitmap originalBitmap, int maxWidth, int maxHeight) {
@@ -188,6 +191,12 @@ public class register extends AppCompatActivity {
         Bitmap scaledBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalWidth, originalHeight, matrix, true);
 
         return scaledBitmap;
+    }
+    public static byte[] imageViewToBy(Bitmap mutableBitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        byte[] bytes = outputStream.toByteArray();
+        return bytes;
     }
 
 

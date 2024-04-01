@@ -9,16 +9,16 @@ public class DiseaseList_Domain implements Serializable {
     private String severity;
     private String location;
     private String description;
-    private String image;
+    private String image_name;
 
-    public DiseaseList_Domain(String id, String disease_name, String date, String severity, String location, String description, String image) {
+    public DiseaseList_Domain(String id, String disease_name, String date, String severity, String location, String description, String image_name) {
         this.id = id;
         this.disease_name = disease_name;
         this.date = date;
         this.severity = severity;
         this.location = location;
         this.description = description;
-        this.image = image;
+        this.image_name = image_name;
     }
 
     public String getId() {
@@ -70,10 +70,10 @@ public class DiseaseList_Domain implements Serializable {
     }
 
     public String getImage() {
-        return image;
+        return image_name;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.image_name = image;
     }
 }

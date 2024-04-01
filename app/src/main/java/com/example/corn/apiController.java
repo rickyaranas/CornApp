@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class apiController
 {
-    private static final String url="http://192.168.100.8/LoginRegister/";
+    private static final String url="http://192.168.100.5/LoginRegister/";
     private static apiController clientobject;
     private static Retrofit retrofit;
 
@@ -29,7 +29,7 @@ public class apiController
         return clientobject;
     }
 
-    apiset getapi()
+    public apiset getapi()
     {
         return retrofit.create(apiset.class);
     }
