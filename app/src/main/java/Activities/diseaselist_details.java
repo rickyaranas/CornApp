@@ -44,7 +44,7 @@ public class diseaselist_details extends AppCompatActivity {
         date.setText("Date: "+items.getDate());
         severity.setText("Disease Severity Level: "+items.getSeverity());
 
-        String imageUrl = "http://192.168.100.5/LoginRegister/images/scanned_image/" + items.getImage();
+        String imageUrl = "http://192.168.100.9/LoginRegister/images/scanned_image/" + items.getImage();
 
         Glide.with(this)
                 .load(imageUrl)

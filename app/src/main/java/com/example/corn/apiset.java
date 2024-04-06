@@ -33,6 +33,9 @@ public interface apiset {
     @GET("fetch_user_data.php")
     Call<ArrayList<user_info_domain>> getUserInfo(@Query("user_id") String user_id);
 
+    @GET("update_user.php")
+    Call<ArrayList<user_info_domain>> Update(@Query("user_id") String user_id);
+
     @GET("fetch_local_farms.php")
     Call<ArrayList<local_farms_domain>> getFarminfo(@Query("municipality") String municipality);
 }

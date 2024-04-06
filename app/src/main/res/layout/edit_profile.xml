@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".settingsfragment">
+
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/email"-->
+    <!--        android:layout_width="330dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_x="43dp"-->
+    <!--        android:layout_y="126dp"-->
+    <!--        android:drawableLeft="@drawable/ic_baseline_email_24"-->
+    <!--        android:drawablePadding="8dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:fontFamily="@font/poppins_regular"-->
+    <!--        android:hint="Enter your email"-->
+    <!--        android:inputType="textEmailAddress" />-->
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_x="40dp"
+        android:layout_y="65dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Enter your Name"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="40dp"
+        android:layout_y="45dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Fullname"
+        android:textColor="#128C80"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="41dp"
+        android:layout_y="134dp"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        app:endIconMode="password_toggle" />
+
+    <TextView
+        android:id="@+id/passwordtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="41dp"
+        android:layout_y="113dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Password"
+        android:textColor="#128C80"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/conpasstv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="41dp"
+        android:layout_y="194dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Confirm Password"
+        android:textColor="#128C80"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/confirmpass"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="41dp"
+        android:layout_y="213dp"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Confirm your password"
+        android:inputType="textPassword"
+        app:endIconMode="password_toggle" />
+
+    <ImageView
+        android:id="@+id/profile_edit"
+        android:layout_width="71dp"
+        android:layout_height="52dp"
+        android:layout_centerHorizontal="true"
+        android:layout_x="42dp"
+        android:layout_y="268dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_x="135dp"
+        android:layout_y="272dp"
+        android:backgroundTint="#128C80"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Submit"
+
+        android:textSize="15dp"
+        app:cornerRadius="13dp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="280dp"
+        android:layout_y="273dp" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/emailtv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_x="44dp"-->
+    <!--        android:layout_y="105dp"-->
+    <!--        android:fontFamily="@font/poppins_regular"-->
+    <!--        android:text="Email"-->
+    <!--        android:textColor="#128C80"-->
+    <!--        android:textSize="15dp"-->
+    <!--        android:textStyle="bold" />-->
+
+
+</AbsoluteLayout>
+
+
+

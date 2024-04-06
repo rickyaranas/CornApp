@@ -68,70 +68,92 @@ public class register extends AppCompatActivity {
                 email = TIemail.getText().toString();
                 password = TIpassword.getText().toString();
                 confirmpass = Tconfirmpass.getText().toString();
-                byte [] image = imageViewToBy(bitmap);
+
 
                 Log.d("EditTextDebug", "fullname: " + fullname);
                 Log.d("EditTextDebug", "email: " + email);
                 Log.d("EditTextDebug", "password: " + password);
 
                 if(!fullname.equals("") && !email.equals("") && !password.equals("")) {
-                    if (password.equals(confirmpass)) {
+                    if (isValidEmail(email)) {
+                        if (isStrongPassword(password)) {
+                        if (password.equals(confirmpass)) {
+                            if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
+                                byte [] image = imageViewToBy(bitmap);
 
-                        progress.setVisibility(View.VISIBLE);
+                                progress.setVisibility(View.VISIBLE);
 
-                        Handler handler = new Handler();
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                String[] field = new String[4];
-                                field[0] = "fullname";
-                                field[1] = "email";
-                                field[2] = "password";
-                                field[3] = "user_image";
+                                Handler handler = new Handler();
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        String[] field = new String[4];
+                                        field[0] = "fullname";
+                                        field[1] = "email";
+                                        field[2] = "password";
+                                        field[3] = "user_image";
 
-                                Log.d("EditTextDebug", "fullname: " + field[0]);
+                                        Log.d("EditTextDebug", "fullname: " + field[0]);
 
-                                String[] data = new String[4];
-                                data[0] = fullname;
-                                data[1] = email;
-                                data[2] = password;
-                                data[3] =  Base64.encodeToString(image, Base64.DEFAULT);;
+                                        String[] data = new String[4];
+                                        data[0] = fullname;
+                                        data[1] = email;
+                                        data[2] = password;
+                                        data[3] = Base64.encodeToString(image, Base64.DEFAULT);
+                                        ;
 
-                                Log.d("EditTextDebug", "fullname: " + data[0]);
+                                        Log.d("EditTextDebug", "fullname: " + data[0]);
 
-                                PutData putData = new PutData("http://192.168.100.5/LoginRegister/signup.php", "POST", field, data);
+                                        PutData putData = new PutData("http://192.168.100.9/LoginRegister/signup.php", "POST", field, data);
 
-                                if (putData.startPut()) {
-                                    if (putData.onComplete()) {
-                                        progress.setVisibility(View.GONE);
+                                        if (putData.startPut()) {
+                                            if (putData.onComplete()) {
+                                                progress.setVisibility(View.GONE);
 
-                                        String result = putData.getResult();
+                                                String result = putData.getResult();
 
-                                        if (result.contains("Successfully")) {
-                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                            Log.i("PutData", result);
-                                            Intent ed = new Intent(getApplicationContext(),login.class);
-                                            startActivity(ed);
-
-
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                            Log.d("EditTextDebug", "last: " + result);
+                                                if (result.contains("Successfully")) {
+                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                    Log.i("PutData", result);
+                                                    Intent ed = new Intent(getApplicationContext(), login.class);
+                                                    startActivity(ed);
 
 
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                    Log.d("EditTextDebug", "last: " + result);
+
+
+                                                }
+
+                                            }
+                                        }
+                                        //End Write and Read data with URL
                                     }
+                                });
 
-                                    }
-                                }
-                                //End Write and Read data with URL
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Please Select you Profile Image", Toast.LENGTH_SHORT).show();
+
                             }
-                        });
 
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "The passwords aren't the same!", Toast.LENGTH_SHORT).show();
+                            Tconfirmpass.setError("Passwords do not match");
+                            Tconfirmpass.setText("");
+                        }
+                        } else {
+                            // Password is not strong
+                            Toast.makeText(getApplicationContext(), "Password must be at least 8 characters long and contains at least one digit", Toast.LENGTH_LONG).show();
+                            TIpassword.setError("Password must be at least 8 characters and one digit");
+                            TIpassword.setText("");
+                        }
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "The passwords aren't the same!", Toast.LENGTH_SHORT).show();
-                        Tconfirmpass.setError("Passwords do not match");
-                        Tconfirmpass.setText("");
+                        Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
+                        TIemail.setError("Invalid email address");
+                        TIemail.setText("");
                     }
                 }
                 else {
@@ -149,6 +171,31 @@ public class register extends AppCompatActivity {
         });
     }
 
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+(?:com|ph)$";
+        return email.matches(emailRegex);
+//        ^: Asserts the start of the line.
+//          [a-zA-Z0-9_+&*-]+: Matches one or more characters from the set a-z, A-Z, 0-9, _, +, &, *, and - before the "@" symbol.
+//        (?:\\.[a-zA-Z0-9_+&*-]+)*: Allows for zero or more occurrences of a dot followed by one or more characters from the set a-z, A-Z, 0-9, _, +, &, and *.
+//        @: Matches the "@" symbol.
+//        (?:[a-zA-Z0-9-]+\\.)+: Matches one or more occurrences of characters followed by a dot, allowing for subdomains.
+//        (?:com|ph): Matches either "com" or "ph" as the top-level domain.
+//                $: Asserts the end of the line.
+//
+    }
+    private boolean isStrongPassword(String password) {
+        // Define the criteria for a strong password
+        String passwordPattern = "^(?=.*[0-9])(?=\\S+$).{8,}$";
+        return password.matches(passwordPattern);
+//        ^ asserts the start of the line.
+//        (?=.*[0-9]) asserts that the password must contain at least one digit.
+//        (?=.*[a-z]) asserts that the password must contain at least one lowercase letter.
+//        (?=.*[A-Z]) asserts that the password must contain at least one uppercase letter.
+//        (?=.*[@#$%^&+=!]) asserts that the password must contain at least one special character.
+//        (?=\S+$) asserts that the password must not contain any whitespace characters.
+//        .{8,} specifies that the password must be at least 8 characters long.
+//                $ asserts the end of the line.
+  }
     public void selectImage(View view) {
 
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

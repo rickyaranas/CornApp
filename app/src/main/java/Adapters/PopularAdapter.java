@@ -43,7 +43,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.titleTxt.setText(items.get(position).getDisease_name());
         holder.locationTxt.setText(items.get(position).getLocation());
 
-        String imageUrl = "http://192.168.100.5/LoginRegister/images/disease_images/" + items.get(position).getPic();
+        String imageUrl = "http://192.168.100.9/LoginRegister/images/disease_images/" + items.get(position).getPic();
         Glide.with(holder.titleTxt.getContext())
                 .load(imageUrl)
                 .transform(new CenterCrop(), new RoundedCorners(40))

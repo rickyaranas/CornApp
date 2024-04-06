@@ -1,5 +1,7 @@
 package com.example.corn;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,7 +9,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -43,7 +47,7 @@ public class home extends AppCompatActivity {
     ActivityHomeBinding binding;
     FloatingActionButton scanButton;
     String userId;
-
+    private static final String PREF_NAME = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,21 +55,24 @@ public class home extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (getIntent() != null) {
-            // Retrieve userId from the Intent
-           userId = getIntent().getStringExtra("userId");
-            // Check if userId is not null
-            if (userId != null) {
-                // Use userId as needed
-                Log.i("UserId", userId);
-            } else {
-                // Handle the case where userId is null
-                Log.e("UserId", "userId is null");
-            }
-        } else {
-            // Handle the case where Intent is null
-            Log.e("Intent", "Intent is null");
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        userId = sharedPreferences.getString("userId", null);
+     //   Log.i("UserId", userId);
+//        if (getIntent() != null) {
+//            // Retrieve userId from the Intent
+//           userId = getIntent().getStringExtra("userId");
+//            // Check if userId is not null
+//            if (userId != null) {
+//                // Use userId as needed
+//                Log.i("UserId", userId);
+//            } else {
+//                // Handle the case where userId is null
+//                Log.e("UserId", "userId is null");
+//            }
+//        } else {
+//            // Handle the case where Intent is null
+//            Log.e("Intent", "Intent is null");
+//        }
         replaceFragment(new homefragment());
 
         scanButton = findViewById(R.id.scanButton);
@@ -223,5 +230,6 @@ public class home extends AppCompatActivity {
 //        trackingOverlay.postInvalidate();
 //        imageView.setImageBitmap(bitmap);
     }
+
 
 }

@@ -41,7 +41,7 @@ public class DiseaseList_Adapter extends RecyclerView.Adapter<DiseaseList_Adapte
         holder.location.setText(items.get(position).getLocation());
         holder.date.setText(items.get(position).getDate());
 
-        String imageUrl = "http://192.168.100.5/LoginRegister/images/scanned_image/" + items.get(position).getImage();
+        String imageUrl = "http://192.168.100.9/LoginRegister/images/scanned_image/" + items.get(position).getImage();
         Glide.with(holder.disease_name.getContext())
                 .load(imageUrl)
                 .transform(new CenterCrop(), new RoundedCorners(40))

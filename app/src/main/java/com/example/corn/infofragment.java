@@ -62,7 +62,7 @@ public class infofragment extends Fragment {
 
     }
     public void get_userID(){
-        String apiUrl = "http://192.168.100.5/LoginRegister/fetch_user_data.php?user_id=" + userId;
+        String apiUrl = "http://192.168.100.9/LoginRegister/fetch_user_data.php?user_id=" + userId;
         Log.d("Generated URL", apiUrl); // Print the generated URL in Logcat
 
         apiset apiService = apiController.getInstance().getapi();

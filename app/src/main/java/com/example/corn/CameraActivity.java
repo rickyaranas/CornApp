@@ -617,16 +617,16 @@ public abstract class CameraActivity extends AppCompatActivity
     // For example, if you want to show a dialog when the user presses the back button:
     super.onBackPressed();
     Intent intent = new Intent(this, home.class);
-    new AlertDialog.Builder(this)
-            .setTitle("Confirm Exit ")
-            .setMessage("Are you sure you want to end Realtime Detection?")
-            .setNegativeButton(android.R.string.no, null)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface arg0, int arg1) {
-                startActivity(intent);
-                CameraActivity.super.onBackPressed();
-              }
-            }).create().show();
+//    new AlertDialog.Builder(this)
+//            .setTitle("Confirm Exit ")
+//            .setMessage("Are you sure you want to end Realtime Detection?")
+//            .setNegativeButton(android.R.string.no, null)
+//            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//              public void onClick(DialogInterface arg0, int arg1) {
+//                startActivity(intent);
+//                CameraActivity.super.onBackPressed();
+//              }
+//            }).create().show();
   }
 
 }

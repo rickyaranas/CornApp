@@ -5,7 +5,9 @@ import static android.os.Build.VERSION_CODES.O;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,10 +26,19 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class login extends AppCompatActivity {
     Button loginC;
     EditText anchor, Temail, Tpassword;
+    String userId;
+
+    private static final String PREF_NAME = "MyPrefs";
+    private static final String KEY_LOGGED_IN = "isLoggedIn";
+
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
 
         loginC = findViewById(R.id.loginC);
         anchor = findViewById(R.id.anchor);
@@ -56,7 +67,7 @@ public class login extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.100.5/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.100.9/LoginRegister/login.php", "POST", field, data);
 
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
@@ -68,13 +79,16 @@ public class login extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),result+"",Toast.LENGTH_SHORT).show();
                                         Log.i("PutData", result);
 
+
                                         String[] parts = result.split(":");
                                         String successMessage = parts[0];
-                                        String userId = parts[1];
+                                         userId = parts[1];
 
                                         // Pass user ID to the next activity or fragment
                                         Intent intent = new Intent(getApplicationContext(), home.class);
+
                                         intent.putExtra("userId", userId);
+                                        setUserLoggedIn(true);
                                         startActivity(intent);
                                         Log.i("User ID", userId);
 
@@ -104,5 +118,17 @@ public class login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    private void setUserLoggedIn(boolean loggedIn) {
+        // Ensure sharedPreferences is not null
+        if (sharedPreferences != null) {
+            // Store the value of loggedIn in SharedPreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(KEY_LOGGED_IN, loggedIn);
+            editor.putString("userId", userId);
+            editor.apply();
+        } else {
+            Log.e("LoginActivity", "SharedPreferences is null");
+        }
     }
 }

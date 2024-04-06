@@ -23,11 +23,11 @@
             android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_regular"
             android:text="Hi! Welcome farmers"
             android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="330dp"
@@ -54,10 +54,10 @@
                 android:id="@+id/tt1"
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="60dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="  Turn your Android Phone into a Mobile Crop Doctor?"
+                android:text="CornApp: Your go-to solution for hassle-free corn disease detection."
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -65,10 +65,10 @@
                 android:id="@+id/tt2"
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="130dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="  CornConnect: Where Grain Meets Gain "
+                android:text="Empowering farmers with quick, accurate diagnoses to safeguard their harvests."
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -76,10 +76,10 @@
                 android:id="@+id/tt3"
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="199dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="  CornCompanion Collective: Journeying Together to Financial Abundance!"
+                android:text="Detect. Protect. Thrive."
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -104,23 +104,23 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Heal Your Crop!"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="44dp"
-                android:layout_height="43dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/qr" />
 
             <ImageView
                 android:id="@+id/imageView32"
-                android:layout_width="44dp"
-                android:layout_height="43dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="100dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/next" />
 
             <ImageView
@@ -128,30 +128,42 @@
                 android:layout_width="44dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="150dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/paper" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="44dp"
-                android:layout_height="43dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/next" />
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="44dp"
-                android:layout_height="43dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="250dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/health" />
+
+            <TextView
+                android:id="@+id/ttt1a"
+                android:layout_width="252dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="SCAN OR SELECT FROM GALLERY!"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/to_camera"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="94dp"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="64dp"
                 android:layout_marginTop="120dp"
                 android:background="@drawable/camera_white"
                 android:backgroundTint="#128C80"
@@ -164,14 +176,14 @@
 
             <ImageButton
                 android:id="@+id/togallery"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
                 android:layout_above="@id/imageView2"
-
-                android:layout_marginLeft="164dp"
+                android:layout_marginLeft="184dp"
                 android:layout_marginTop="120dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/gallery_white"
+                android:backgroundTint="#128C80"
                 android:clickable="true" />
 
 
@@ -186,12 +198,12 @@
         android:layout_height="wrap_content"
         android:layout_x="34dp"
         android:layout_y="37dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="CORN APP SCANNER"
+        android:text="CORN DISEASE DETECTION"
         android:textColor="@color/black"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
 

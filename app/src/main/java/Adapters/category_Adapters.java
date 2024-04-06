@@ -53,7 +53,7 @@ public class category_Adapters extends RecyclerView.Adapter<category_Adapters.Vi
 //            Intent intent=new Intent(holder.itemView.getContext(), Activities.localfarms.class);
 //            intent.putExtra("object", items.get(position));
 //            holder.itemView.getContext().startActivity(intent);
-        String imageUrl = "http://192.168.100.5/LoginRegister/images/local_farms/" + items.get(position).getLogo();
+        String imageUrl = "http://192.168.100.9/LoginRegister/images/local_farms/" + items.get(position).getLogo();
         Glide.with(holder.itemView.getContext())
             .load(imageUrl)
             .override(Target.SIZE_ORIGINAL)
