@@ -7,6 +7,7 @@ import java.util.List;
 
 import Domains.CategoryDomain;
 import Domains.DiseaseList_Domain;
+import Domains.Disease_info;
 import Domains.PopularDomain;
 import Domains.ScannedDisease_Domain;
 import Domains.local_farms_domain;
@@ -38,4 +39,7 @@ public interface apiset {
 
     @GET("fetch_local_farms.php")
     Call<ArrayList<local_farms_domain>> getFarminfo(@Query("municipality") String municipality);
+
+    @GET("fetch_disease_info.php")
+    Call<ArrayList<Disease_info>> getDisease_info(@Query("disease_name") String disease_name);
 }

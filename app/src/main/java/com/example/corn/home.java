@@ -80,6 +80,7 @@ public class home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                Intent i = new Intent(getApplicationContext(),DetectorActivity.class);
+               i.putExtra("user_Id",userId);
                startActivity(i);
             }
         });

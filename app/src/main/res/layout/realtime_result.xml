@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:background="@color/white"
     android:orientation="horizontal">
 
     <TextView
@@ -14,6 +15,8 @@
     <TextView
         android:id="@+id/pest_NAME"
         android:layout_width="250dp"
+        android:textColor="@color/black"
+        android:text="Yeah"
         android:layout_height="45dp"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"

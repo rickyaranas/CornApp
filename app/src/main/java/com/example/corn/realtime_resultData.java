@@ -7,11 +7,11 @@ public class realtime_resultData {
      String result_confidence;
 //     Bitmap Image;
 
-    realtime_resultData(String id, String name, String confidence){
+    realtime_resultData( String name){
 
-        this. result_id = name;
+//        this. result_id = name;
         this.result_name = name;
-        this.result_confidence = confidence;
+//        this.result_confidence = confidence;
 //        this.Image = Image;
 
     }

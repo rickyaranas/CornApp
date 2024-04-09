@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="640dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_btn_intro4"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+            <ImageView
+                android:id="@+id/pestImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/background_square"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/pestName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Pest Name"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:textStyle="bold"
+                android:text="Scientific Name"
+                android:textColor="@color/charcoal"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/pestScientific"
+                android:layout_marginTop="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Scientific Name"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:text="Order"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textColor="@color/charcoal"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/pestOrder"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Order"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:text="Family"
+                android:textColor="@color/charcoal"
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/pestFamily"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Family"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Description"
+            android:textColor="@color/charcoal"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:justificationMode="inter_word"
+            android:padding="5dp"
+            android:id="@+id/pestDescription"
+
+            />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Intervention"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/charcoal"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:id="@+id/pestIntervention"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

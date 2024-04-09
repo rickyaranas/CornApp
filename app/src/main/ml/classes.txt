@@ -1,6 +1,6 @@
-brown_spot
-corn_rust
-corn_smut
-downy_mildew
-grey_leaf_spot
-leaf_blight
+Brown Spot
+Corn Rust
+Corn Smut
+Downy Mildew
+Grey Leaf Spot
+Leaf Blight

@@ -23,10 +23,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import java.security.NoSuchAlgorithmException;
+
 public class login extends AppCompatActivity {
     Button loginC;
     EditText anchor, Temail, Tpassword;
     String userId;
+    String password;
+    id_Holder id = id_Holder.getInstance();
 
     private static final String PREF_NAME = "MyPrefs";
     private static final String KEY_LOGGED_IN = "isLoggedIn";
@@ -50,11 +54,17 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final String email, password;
+                final String email, Hpassword;
                 email= Temail.getText().toString();
-                password = Tpassword.getText().toString();
+                Hpassword = Tpassword.getText().toString();
 
-                if(!email.equals("") && !password.equals("")){
+                try {
+                    password = hash.hashString(Hpassword);
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
+
+                if(!email.equals("") && !Hpassword.equals("")){
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override
@@ -88,6 +98,7 @@ public class login extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), home.class);
 
                                         intent.putExtra("userId", userId);
+                                        id.hold_id(Integer.parseInt(userId));
                                         setUserLoggedIn(true);
                                         startActivity(intent);
                                         Log.i("User ID", userId);

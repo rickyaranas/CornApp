@@ -16,6 +16,9 @@
 
 package com.example.corn;
 
+
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -25,12 +28,20 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Base64;
 import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.example.corn.customview.OverlayView;
 import com.example.corn.env.BorderedText;
@@ -40,10 +51,17 @@ import com.example.corn.tflite.Classifier;
 import com.example.corn.tflite.DetectorFactory;
 import com.example.corn.tflite.YoloV5Classifier;
 import com.example.corn.tracking.MultiBoxTracker;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -54,7 +72,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     private static final Logger LOGGER = new Logger();
 
     private static final DetectorMode MODE = DetectorMode.TF_OD_API;
-    private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.3f;
+    private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.4f;
     private static final boolean MAINTAIN_ASPECT = true;
     private static final Size DESIRED_PREVIEW_SIZE = new Size(640,640 ); //3840x2160, 3264x2448
 //    public final class Size DESIRED_PREVIEW_SIZE = new Size(0,0);
@@ -81,7 +99,17 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private BorderedText borderedText;
 
+    location_Tracker loc = location_Tracker.getInstance();
     valueTracker value;
+    detection_Tracker track = detection_Tracker.getInstance();
+    id_Holder idHolder = id_Holder.getInstance();
+    String currentDate;
+    String currentTime;
+    String address;
+    id_Holder id = id_Holder.getInstance();
+
+
+
 
 
     @Override
@@ -93,6 +121,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         borderedText.setTypeface(Typeface.MONOSPACE);
 
         tracker = new MultiBoxTracker(this);
+
 
         final int modelIndex = 0;
         final String modelString = "best-fp16.tflite";
@@ -143,6 +172,18 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 });
 
         tracker.setFrameConfiguration(previewWidth, previewHeight, sensorOrientation);
+    }
+    public void storeCurrentDateTime() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        Date now = new Date();
+
+        currentDate = sdfDate.format(now);
+        currentTime = sdfTime.format(now);
+
+        // Now 'currentDate' holds the current date and 'currentTime' holds the current time
+//        System.out.println("Current Date: " + currentDate);
+//        System.out.println("Current Time: " + currentTime);
     }
 
     protected void updateActiveModel() {
@@ -271,6 +312,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                         final List<Classifier.Recognition> mappedRecognitions =
                                 new LinkedList<Classifier.Recognition>();
+
                         for (final Classifier.Recognition result : results) {
                             final RectF location = result.getLocation();
                             if (location != null && result.getConfidence() >= minimumConfidence) {
@@ -278,13 +320,85 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                                 cropToFrameTransform.mapRect(location);
                                 // To get Id of the Detected Pest
-                                showPestId(result.getId(), result.getTitle());
+
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
-                                value.set_id(result.getId());
-                                value.set_name(result.getTitle());
-                                value.set_confidence(result.getConfidence());
-//                                displayRecycler(result.getId(),result.getTitle(),result.getConfidence());
+
+                                String pest_name = result.getTitle();
+                                float confidence = result.getConfidence();
+                                String confidenceStr = String.format("%.2f",confidence * 100.0f );
+                                showPestId(confidenceStr,pest_name);
+                                storeCurrentDateTime();
+                                String date = currentDate;
+
+                                address = loc.getTown();
+
+                                //Pass the result to the singleton
+                                track.set_pest(result.getTitle());
+
+
+                                Log.d("Name:    ", pest_name);
+                                Log.d("Name:    ", pest_name);
+                                Log.d("Name:    ", pest_name);
+                                Log.d("Name:    ", pest_name);
+                                System.out.println("PEST ID: "+result.getId()+ " PEST NAME: "+result.getTitle());
+
+                                    if(track.has_changed_value) {
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        cropCopyBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        byte[] image = stream.toByteArray();
+                                        String user_id = String.valueOf(id.retrieve_id());
+//                                        database.insertPest(pest_name, confidenceStr, image, currentTime, currentDate, id);
+//                                        final String u ser_id, disease_name, location, date, image, confidence_d;
+                                        Handler handler = new Handler();
+                                        handler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                String[] field = new String[6];
+                                                field[0] = "user_id";
+                                                field[1] = "disease_name";
+                                                field[2] = "location";
+                                                field[3] = "date";
+                                                field[4] = "image_name";
+                                                field[5] = "confidence_level";
+
+                                                String[] data = new String[6];
+                                                data[0] = user_id;
+                                                data[1] = pest_name;
+                                                data[2] = address;
+                                                data[3] = date;
+                                                data[4] = Base64.encodeToString(image, Base64.DEFAULT);
+                                                data[5] = confidenceStr;
+
+                                                Log.d("EditTextDebug", "fullname: " + data[0]+data[1]+data[2]+data[3]);
+                                                Log.d("edwin,","user_id: " + data[0]);
+                                                Log.d("edwin,","image_name: " + data[2]);
+                                                Log.d("edwin,","image_name: " + image);
+
+                                                PutData putData = new PutData("http://192.168.100.9/LoginRegister/madam.php", "POST", field, data);
+                                                if (putData.startPut()) {
+                                                    if (putData.onComplete()) {
+                                                        String result = putData.getResult();
+
+                                                        if (result.contains("Sign Up Success")) {
+                                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                            Log.i("PutData", result);
+//                                                    Intent ed = new Intent(getApplicationContext(),login.class);
+//                                                    startActivity(ed);
+
+
+                                                        } else {
+                                                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                                            Log.d("EditTextDebug", "last: " + result);
+                                                        }
+
+                                                    }
+                                                }
+
+
+                                            }
+                                        });
+                                    }
 
                             }
                         }
@@ -332,4 +446,5 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     protected void setNumThreads(final int numThreads) {
         runInBackground(() -> detector.setNumThreads(numThreads));
     }
+
 }

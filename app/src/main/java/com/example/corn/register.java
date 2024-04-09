@@ -26,6 +26,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 
 public class register extends AppCompatActivity {
@@ -37,6 +38,8 @@ public class register extends AppCompatActivity {
 
     Bitmap bitmap;
     Bitmap reducedSize;
+
+    String password;
 
 
 
@@ -63,21 +66,28 @@ public class register extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                final String fullname, email, password,confirmpass;
+                final String fullname, email, Tpassword,confirmpass;
                 fullname = TIfullname.getText().toString();
                 email = TIemail.getText().toString();
-                password = TIpassword.getText().toString();
+                Tpassword = TIpassword.getText().toString();
                 confirmpass = Tconfirmpass.getText().toString();
+
+                 password = null;
+                try {
+                    password = hash.hashString(Tpassword);
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
 
 
                 Log.d("EditTextDebug", "fullname: " + fullname);
                 Log.d("EditTextDebug", "email: " + email);
-                Log.d("EditTextDebug", "password: " + password);
+                Log.d("EditTextDebug", "password: " + Tpassword);
 
-                if(!fullname.equals("") && !email.equals("") && !password.equals("")) {
+                if(!fullname.equals("") && !email.equals("") && !Tpassword.equals("")) {
                     if (isValidEmail(email)) {
-                        if (isStrongPassword(password)) {
-                        if (password.equals(confirmpass)) {
+                        if (isStrongPassword(Tpassword)) {
+                        if (Tpassword.equals(confirmpass)) {
                             if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
                                 byte [] image = imageViewToBy(bitmap);
 
