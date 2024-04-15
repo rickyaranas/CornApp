@@ -47,6 +47,7 @@ public class home extends AppCompatActivity {
     ActivityHomeBinding binding;
     FloatingActionButton scanButton;
     String userId;
+    id_Holder id = id_Holder.getInstance();
     private static final String PREF_NAME = "MyPrefs";
 
     @Override
@@ -57,6 +58,7 @@ public class home extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         userId = sharedPreferences.getString("userId", null);
+        id.hold_id(Integer.parseInt(userId));
      //   Log.i("UserId", userId);
 //        if (getIntent() != null) {
 //            // Retrieve userId from the Intent

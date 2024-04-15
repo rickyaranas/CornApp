@@ -44,16 +44,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/back_btn" />
 
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="328dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/backbtn"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/backbtn"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/about" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView12"-->
+<!--                    android:layout_width="45dp"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="328dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/backbtn"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/backbtn"-->
+<!--                    app:layout_constraintVertical_bias="0.0"-->
+<!--                    app:srcCompat="@drawable/about" />-->
 
                 <TextView
                     android:id="@+id/disease_name"
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:text="CORN DISEASE TYPE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="22dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -95,74 +95,74 @@
                 android:textSize="15dp"
                 android:textColor="@color/black"
                 android:text="Date: " />
-            <TextView
-                android:id="@+id/weather"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginStart="32dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:text="Weather Data: " />
+<!--            <TextView-->
+<!--                android:id="@+id/weather"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="Weather Data: " />-->
 
 
-            <TextView
-                android:id="@+id/severity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginStart="32dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:text="Disease Severity Level: " />
+<!--            <TextView-->
+<!--                android:id="@+id/severity"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="Disease Severity Level: " />-->
 
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:text="DESCRIPTION" />
-            <TextView
-                android:id="@+id/desctxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
+<!--            <TextView-->
+<!--                android:id="@+id/textView15"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:textSize="20dp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="DESCRIPTION" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/desctxt"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginEnd="32dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:textSize="15dp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="" />-->
 
-            <TextView
-                android:id="@+id/rec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginStart="32dp"
-                android:textSize="20dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:text="Recommended Actions:" />
-            <TextView
-                android:id="@+id/rectxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:text="Use resistant hybrids. Fungicides may be warranted on inbreds for seed production during the early stages of this disease. Crop rotation and tillage practices may be helpful in some cases." />
+<!--            <TextView-->
+<!--                android:id="@+id/rec"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:textSize="20dp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="Recommended Actions:" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/rectxt"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginEnd="32dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:textSize="15dp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="Use resistant hybrids. Fungicides may be warranted on inbreds for seed production during the early stages of this disease. Crop rotation and tillage practices may be helpful in some cases." />-->
 
             <TextView
                 android:id="@+id/related"
@@ -197,25 +197,25 @@
                 android:layout_marginEnd="32dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:text="CORNJEMA" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView16"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:text="CORNJEMA" />-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/purple_200"
-                    style="@android:style/Widget.Button"
-                    android:text="Button" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/button2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@color/purple_200"-->
+<!--                    style="@android:style/Widget.Button"-->
+<!--                    android:text="Button" />-->
 
-                </LinearLayout>
+            </LinearLayout>
 
 
         </LinearLayout>

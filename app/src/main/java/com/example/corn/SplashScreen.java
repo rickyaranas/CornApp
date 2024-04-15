@@ -85,6 +85,6 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 finish();
             }
-        }, 2500); // 2000 milliseconds = 2 seconds delay
+        }, 3500); // 2000 milliseconds = 2 seconds delay
     }
 }

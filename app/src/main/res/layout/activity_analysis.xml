@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/farmer_background"
+    tools:context=".Analysis">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:elevation="20dp"
+        android:background="@drawable/background_btn_intro7"
+        >
+            <RelativeLayout
+                android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:alpha="0.8"
+                android:elevation="30dp"
+                android:background="@drawable/background_btn_intro4"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="10dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/titlelabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Detection History"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/titlelabel"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/new_background_lightgreen">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart"
+                        android:layout_width="350dp"
+                        android:layout_height="345dp"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/card1"
+                android:id="@+id/relative1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/background_btn_intro4"
+                    android:alpha="0.9"/>
+                <TextView
+                    android:id="@+id/label1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Total Detected \nPest"/>
+                <TextView
+                    android:id="@+id/total_pest"
+                    android:layout_width="140dp"
+                    android:layout_height="80dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    android:layout_below="@id/label1"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="50sp"
+                    android:paddingTop="10dp"
+                    android:background="@drawable/new_background_lightgreen"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/card1"
+                android:id="@+id/relative2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/relative1"
+                android:layout_marginStart="20dp">
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/background_btn_intro4"
+                    android:alpha="0.9"/>
+                <TextView
+                    android:id="@+id/label2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    android:layout_marginTop="10dp"
+                    android:text="Most Detected \nPest"/>
+                <TextView
+                    android:id="@+id/most_detected"
+                    android:layout_width="140dp"
+                    android:layout_height="80dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    android:layout_below="@id/label2"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="15dp"
+                    android:textSize="25sp"
+                    android:background="@drawable/new_background_lightgreen"
+                    android:text="__"/>
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_btn_intro4"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/relative2"
+            android:padding="10dp"
+            >
+            <TextView
+                android:id="@+id/label11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pest Ranking"
+                android:layout_alignParentTop="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/charcoal"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/label12"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="Pest Name"
+                android:textSize="15sp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@id/label11"
+                android:textColor="@color/charcoal"
+                android:textAlignment="textStart"/>
+            <TextView
+                android:id="@+id/label13"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Frequency"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/label11"
+                android:textColor="@color/charcoal"
+                android:layout_toRightOf="@id/label12"
+                android:textAlignment="textStart"/>
+
+
+            <RelativeLayout
+                android:layout_below="@id/label12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/new_background_lightgreen"
+                android:padding="5dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ranking_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/errormsg"
+                android:layout_width="370dp"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                android:background="@drawable/background_btn_intro6"
+                android:alpha="0.7">
+
+                <TextView
+                    android:id="@+id/label22"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="No data to show. Start detection to add data."
+                    android:textAlignment="center"
+                    android:textColor="@color/charcoal"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card2"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_btn_intro4"
+                android:padding="10dp">
+
+        <!--        <ImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="ma"-->
+        <!--            android:background="@drawable/background_btn_intro"-->
+        <!--            android:alpha="0.7"-->
+        <!--            android:layout_centerInParent="true"/>-->
+                <TextView
+                    android:id="@+id/label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/charcoal"
+                    android:text="Recommendations:\n"/>
+                <TextView
+                    android:id="@+id/recommendation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text=""
+                    android:layout_below="@id/label"
+                    android:textColor="@color/charcoal"
+                    android:justificationMode="inter_word"
+                    android:padding="5dp"/>
+
+            </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

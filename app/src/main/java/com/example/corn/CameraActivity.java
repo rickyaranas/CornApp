@@ -17,6 +17,7 @@
 package com.example.corn;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
@@ -108,6 +109,10 @@ public abstract class CameraActivity extends AppCompatActivity
   List<realtime_resultData> list;
   detection_Tracker track_pest;
 
+  id_Holder id = id_Holder.getInstance();
+
+  base_url url = base_url.getInstance();
+
   private RecyclerView result_recycler;
   private RecyclerView.Adapter disease_RT_adapters;
 
@@ -131,8 +136,7 @@ public abstract class CameraActivity extends AppCompatActivity
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.tfe_od_activity_camera);
 
-    //Initialize database
-//    database = new DatabaseHandler(this);
+    Intent intent = getIntent();
     track_pest = detection_Tracker.getInstance();
 
     //Ask permision for Camera usage
@@ -596,8 +600,9 @@ public abstract class CameraActivity extends AppCompatActivity
         current_pest = track_pest.get_pest();
         track_pest.reset_to_false();
     }
-
-    String apiUrl = "http://192.168.100.9/LoginRegister/fetch_disease_info.php?disease_name=" +current_pest;
+    int activeCount = Thread.activeCount();
+    Log.i("THread","active threads in current group:" + activeCount);
+    String apiUrl = url.getBase_url()+"LoginRegister/fetch_disease_info.php?disease_name=" +current_pest;
     Log.d("Generated URL farms", apiUrl); // Print the generated URL in Logcat
     Call<ArrayList<Disease_info>> call = apiController
             .getInstance()
@@ -647,23 +652,26 @@ public abstract class CameraActivity extends AppCompatActivity
   protected abstract void setUseNNAPI(boolean isChecked);
 
 
+
+  @SuppressLint("MissingSuperCall")
   @Override
   public void onBackPressed() {
     // Your code here
     // For example, if you want to show a dialog when the user presses the back button:
-    super.onBackPressed();
-    Intent intent = new Intent(this, home.class);
+    Intent intent = new Intent(this,home.class);
     new AlertDialog.Builder(this)
             .setTitle("Confirm Exit ")
             .setMessage("Are you sure you want to end Realtime Detection?")
-            .setNegativeButton(android.R.string.no, null)
+            .setNegativeButton(android.R.string.no,null)
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface arg0, int arg1) {
 
                 //Reset the singleton Detection_tracker
                 track_pest.resetInstance();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 startActivity(intent);
+                finish();
                 CameraActivity.super.onBackPressed();
               }
             }).create().show();

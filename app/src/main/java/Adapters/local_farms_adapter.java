@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ import Domains.local_farms_domain;
 
 public class local_farms_adapter  extends RecyclerView.Adapter<local_farms_adapter.ViewHolders> {
     ArrayList<local_farms_domain> items;
+    base_url url = base_url.getInstance();
     public local_farms_adapter(ArrayList<local_farms_domain> items) {
         this.items = items;
     }
@@ -47,7 +49,7 @@ public class local_farms_adapter  extends RecyclerView.Adapter<local_farms_adapt
         ImageView imageBusttons3;
         public ViewHolders(@NonNull View itemView) {
             super(itemView);
-            address=itemView.findViewById(R.id.address);
+            address=itemView.findViewById(R.id.M_disease);
             municipality=itemView.findViewById(R.id.municipality);
             imageBusttons3=itemView.findViewById(R.id.imageBusttons3);
         }

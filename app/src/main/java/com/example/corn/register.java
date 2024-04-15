@@ -40,6 +40,7 @@ public class register extends AppCompatActivity {
     Bitmap reducedSize;
 
     String password;
+    base_url url = base_url.getInstance();
 
 
 
@@ -114,7 +115,7 @@ public class register extends AppCompatActivity {
 
                                         Log.d("EditTextDebug", "fullname: " + data[0]);
 
-                                        PutData putData = new PutData("http://192.168.100.9/LoginRegister/signup.php", "POST", field, data);
+                                        PutData putData = new PutData(url.getBase_url()+"LoginRegister/signup.php", "POST", field, data);
 
                                         if (putData.startPut()) {
                                             if (putData.onComplete()) {
@@ -255,8 +256,6 @@ public class register extends AppCompatActivity {
         byte[] bytes = outputStream.toByteArray();
         return bytes;
     }
-
-
 
 }
 

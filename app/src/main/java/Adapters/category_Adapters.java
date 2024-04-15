@@ -16,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.target.Target;
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ import Domains.CategoryDomain;
 public class category_Adapters extends RecyclerView.Adapter<category_Adapters.ViewHolders> {
 
     ArrayList<CategoryDomain> items;
+    base_url url = base_url.getInstance();
 
     public category_Adapters(ArrayList<CategoryDomain> items) {
         this.items = items;
@@ -41,19 +43,7 @@ public class category_Adapters extends RecyclerView.Adapter<category_Adapters.Vi
     public void onBindViewHolder(@NonNull category_Adapters.ViewHolders holder, int position) {
     holder.titleTxt.setText(items.get(position).getMunicipality());
 
-
-//    int drawableResourceId = holder.itemView.getResources().getIdentifier(items.get(position).getPicPath()
-//            , "drawable", holder.itemView.getContext().getPackageName());
-//
-//    Glide.with(holder.itemView.getContext())
-//            .load(drawableResourceId)
-//            .override(Target.SIZE_ORIGINAL)
-//            .into(holder.picImgl);
-//    holder.itemView.setOnClickListener(v -> {
-//            Intent intent=new Intent(holder.itemView.getContext(), Activities.localfarms.class);
-//            intent.putExtra("object", items.get(position));
-//            holder.itemView.getContext().startActivity(intent);
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/local_farms/" + items.get(position).getLogo();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/local_farms/" + items.get(position).getLogo();
         Glide.with(holder.itemView.getContext())
             .load(imageUrl)
             .override(Target.SIZE_ORIGINAL)

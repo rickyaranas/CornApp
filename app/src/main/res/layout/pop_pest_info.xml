@@ -22,6 +22,7 @@
                 android:id="@+id/pestImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:src="@drawable/background_square"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
@@ -37,69 +38,69 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:textStyle="bold"
-                android:text="Scientific Name"
-                android:textColor="@color/charcoal"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-            <TextView
-                android:id="@+id/pestScientific"
-                android:layout_marginTop="10dp"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Scientific Name"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:text="Order"
-                android:textAlignment="textStart"
-                android:textStyle="bold"
-                android:textColor="@color/charcoal"
-                android:textSize="18sp" />
-            <TextView
-                android:id="@+id/pestOrder"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Order"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:text="Family"
-                android:textColor="@color/charcoal"
-                android:textStyle="bold"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-            <TextView
-                android:id="@+id/pestFamily"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Family"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp">-->
+<!--            <TextView-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Scientific Name"-->
+<!--                android:textColor="@color/charcoal"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="18sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/pestScientific"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Scientific Name"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="18sp" />-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TextView-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Order"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/charcoal"-->
+<!--                android:textSize="18sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/pestOrder"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Order"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="18sp" />-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TextView-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:text="Family"-->
+<!--                android:textColor="@color/charcoal"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="18sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/pestFamily"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Family"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="18sp" />-->
+<!--        </LinearLayout>-->
 
         <TextView
 
@@ -121,24 +122,24 @@
 
             />
 
-        <TextView
+<!--        <TextView-->
 
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Intervention"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/charcoal"
-            android:textStyle="bold"
-            android:textSize="18sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:justificationMode="inter_word"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:id="@+id/pestIntervention"
-            android:padding="5dp"
-            />
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:text="Intervention"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:textColor="@color/charcoal"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18sp" />-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:justificationMode="inter_word"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:id="@+id/pestIntervention"-->
+<!--            android:padding="5dp"-->
+<!--            />-->
 
     </LinearLayout>
 

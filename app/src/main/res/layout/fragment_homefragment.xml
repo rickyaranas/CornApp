@@ -7,6 +7,40 @@
     tools:context=".homefragment"
     android:background="@drawable/home">
 
+
+    <RelativeLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:elevation="10dp"
+        android:background="@drawable/background_btn_intro7">
+
+        <TextView
+            android:id="@+id/preparing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Preparing Image . . . "
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/white"
+            android:layout_marginTop="250dp"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="364dp"
+            android:layout_height="166dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_cacheComposition="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_speed="1" />
+    </RelativeLayout>
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="370dp"
         android:layout_height="628dp"
@@ -15,7 +49,7 @@
         android:layout_y="85dp"
         android:background="@drawable/custom_edittext"
         app:cardCornerRadius="25dp"
-        app:cardElevation="10dp">
+        >
 
 
         <TextView
@@ -88,7 +122,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="330dp"
-            android:layout_height="183dp"
+            android:layout_height="114dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="350dp"
             android:background="@drawable/custom_edittext"
@@ -147,12 +181,64 @@
                 android:layout_marginTop="40dp"
                 android:src="@drawable/health" />
 
+            <!--            <TextView-->
+            <!--                android:id="@+id/ttt1a"-->
+            <!--                android:layout_width="252dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="50dp"-->
+            <!--                android:layout_marginTop="100dp"-->
+            <!--                android:fontFamily="@font/poppins_regular"-->
+            <!--                android:text="SCAN OR SELECT FROM GALLERY!"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="15dp"-->
+            <!--                android:textStyle="bold" />-->
+
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/to_camera"-->
+            <!--                android:layout_width="80dp"-->
+            <!--                android:layout_height="60dp"-->
+            <!--                android:layout_marginLeft="64dp"-->
+            <!--                android:layout_marginTop="120dp"-->
+            <!--                android:background="@drawable/camera_white"-->
+            <!--                android:backgroundTint="#128C80"-->
+            <!--                android:clickable="true"-->
+            <!--                android:drawableLeft="@drawable/ic_baseline_camera_24"-->
+            <!--                android:fontFamily="@font/poppins_regular"-->
+            <!--                android:text="Take a picture"-->
+            <!--                android:textSize="15dp"-->
+            <!--                app:cornerRadius="10dp" />-->
+
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/togallery"-->
+            <!--                android:layout_width="80dp"-->
+            <!--                android:layout_height="60dp"-->
+            <!--                android:layout_above="@id/imageView2"-->
+            <!--                android:layout_marginLeft="184dp"-->
+            <!--                android:layout_marginTop="120dp"-->
+            <!--                android:layout_marginBottom="15dp"-->
+            <!--                android:background="@drawable/gallery_white"-->
+            <!--                android:backgroundTint="#128C80"-->
+            <!--                android:clickable="true" />-->
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="330dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="480dp"
+            android:background="@drawable/custom_edittext"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="10dp">
+
+
             <TextView
                 android:id="@+id/ttt1a"
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="SCAN OR SELECT FROM GALLERY!"
                 android:textColor="@color/black"
@@ -164,7 +250,7 @@
                 android:layout_width="80dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="64dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/camera_white"
                 android:backgroundTint="#128C80"
                 android:clickable="true"
@@ -180,7 +266,7 @@
                 android:layout_height="60dp"
                 android:layout_above="@id/imageView2"
                 android:layout_marginLeft="184dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/gallery_white"
                 android:backgroundTint="#128C80"
@@ -188,6 +274,7 @@
 
 
         </androidx.cardview.widget.CardView>
+
 
 
     </androidx.cardview.widget.CardView>
@@ -207,4 +294,6 @@
         android:textStyle="bold" />
 
 
-</FrameLayout>
+
+
+    </FrameLayout>

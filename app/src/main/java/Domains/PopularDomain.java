@@ -8,13 +8,28 @@ public class PopularDomain implements Serializable {
     private String disease_name;
     private String location;
     private String description;
+    private String treatment;
     private String image;
-    public PopularDomain(String id,String disease_name, String location, String description, int bed, boolean guide, double score, String image, boolean wifi) {
+    private String image_links;
+
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
+    public PopularDomain(String id, String disease_name, String location, String description, String treatment, String image_links) {
         this.id = id;
         this.disease_name = disease_name;
         this.location = location;
         this.description = description;
         this.image = image;
+        this.image_links = image_links;
+        this.treatment = treatment;
+
 
     }
     public String getId() {
@@ -57,13 +72,12 @@ public class PopularDomain implements Serializable {
         this.image = image;
     }
 
-    public boolean isGuide() {
-        return false;
+    public String getImage_links() {
+        return image_links;
     }
 
-    public boolean isWifi() {
-
-        return false;
+    public void setImage_links(String image_links) {
+        this.image_links = image_links;
     }
 
 

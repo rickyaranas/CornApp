@@ -9,9 +9,12 @@ public class DiseaseList_Domain implements Serializable {
     private String severity;
     private String location;
     private String description;
+    private String confidence_level;
     private String image_name;
 
-    public DiseaseList_Domain(String id, String disease_name, String date, String severity, String location, String description, String image_name) {
+
+
+    public DiseaseList_Domain(String id, String disease_name, String date, String severity, String location, String description, String image_name, String confidence_level) {
         this.id = id;
         this.disease_name = disease_name;
         this.date = date;
@@ -19,8 +22,15 @@ public class DiseaseList_Domain implements Serializable {
         this.location = location;
         this.description = description;
         this.image_name = image_name;
+        this.confidence_level = confidence_level;
+    }
+    public String getConfidence_level() {
+        return confidence_level;
     }
 
+    public void setConfidence_level(String confidence_level) {
+        this.confidence_level = confidence_level;
+    }
     public String getId() {
         return id;
     }

@@ -140,6 +140,16 @@
                 android:textColor="@color/black"
                  />
 
+            <TextView
+                android:id="@+id/total_detected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Total Disease Detected:"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"

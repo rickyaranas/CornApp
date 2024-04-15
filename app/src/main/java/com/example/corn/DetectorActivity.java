@@ -17,8 +17,6 @@
 package com.example.corn;
 
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -28,9 +26,6 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -40,9 +35,6 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-
 import com.example.corn.customview.OverlayView;
 import com.example.corn.env.BorderedText;
 import com.example.corn.env.ImageUtils;
@@ -51,8 +43,6 @@ import com.example.corn.tflite.Classifier;
 import com.example.corn.tflite.DetectorFactory;
 import com.example.corn.tflite.YoloV5Classifier;
 import com.example.corn.tracking.MultiBoxTracker;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.ByteArrayOutputStream;
@@ -102,11 +92,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     location_Tracker loc = location_Tracker.getInstance();
     valueTracker value;
     detection_Tracker track = detection_Tracker.getInstance();
-    id_Holder idHolder = id_Holder.getInstance();
+
     String currentDate;
     String currentTime;
-    String address;
+//    String address;
     id_Holder id = id_Holder.getInstance();
+    base_url url = base_url.getInstance();
 
 
 
@@ -331,7 +322,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 storeCurrentDateTime();
                                 String date = currentDate;
 
-                                address = loc.getTown();
+                                String address = loc.getTown();
 
                                 //Pass the result to the singleton
                                 track.set_pest(result.getTitle());
@@ -340,7 +331,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 Log.d("Name:    ", pest_name);
                                 Log.d("Name:    ", pest_name);
                                 Log.d("Name:    ", pest_name);
-                                Log.d("Name:    ", pest_name);
+                                Log.d("Name:    ", address);
                                 System.out.println("PEST ID: "+result.getId()+ " PEST NAME: "+result.getTitle());
 
                                     if(track.has_changed_value) {
@@ -372,10 +363,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                                                 Log.d("EditTextDebug", "fullname: " + data[0]+data[1]+data[2]+data[3]);
                                                 Log.d("edwin,","user_id: " + data[0]);
-                                                Log.d("edwin,","image_name: " + data[2]);
+                                                Log.d("edwin,","address: " + data[2]);
                                                 Log.d("edwin,","image_name: " + image);
 
-                                                PutData putData = new PutData("http://192.168.100.9/LoginRegister/madam.php", "POST", field, data);
+                                                PutData putData = new PutData(url.getBase_url()+"LoginRegister/madam.php", "POST", field, data);
                                                 if (putData.startPut()) {
                                                     if (putData.onComplete()) {
                                                         String result = putData.getResult();

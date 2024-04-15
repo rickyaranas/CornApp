@@ -2,6 +2,7 @@ package Adapters;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,7 @@ import Domains.Disease_info;
 public class disease_RT_adapter extends RecyclerView.Adapter<disease_RT_adapter.ViewHolder> {
 
     ArrayList<Disease_info> items;
+    base_url url = base_url.getInstance();
 
     public disease_RT_adapter(ArrayList<Disease_info>items){
         this.items = items;
@@ -49,7 +52,7 @@ public class disease_RT_adapter extends RecyclerView.Adapter<disease_RT_adapter.
 //        holder.location.setText(items.get(position).getLocation());
 //        holder.date.setText(items.get(position).getDate());
 
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/disease_images/" + items.get(position).getImage();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/disease_images/" + items.get(position).getImage();
         Log.d("edwin",imageUrl);
         Glide.with(holder.disease_name.getContext())
                 .load(imageUrl)
@@ -82,19 +85,24 @@ public class disease_RT_adapter extends RecyclerView.Adapter<disease_RT_adapter.
                 //Instantiating the views
                 ImageView image = popupView.findViewById(R.id.pestImage);
                 TextView name = popupView.findViewById(R.id.pestName);
-                TextView scientific = popupView.findViewById(R.id.pestScientific);
-                TextView order = popupView.findViewById(R.id.pestOrder);
-                TextView family = popupView.findViewById(R.id.pestFamily);
+//                TextView scientific = popupView.findViewById(R.id.pestScientific);
+//                TextView order = popupView.findViewById(R.id.pestOrder);
+//                TextView family = popupView.findViewById(R.id.pestFamily);
                 TextView description = popupView.findViewById(R.id.pestDescription);
-                TextView intervention = popupView.findViewById(R.id.pestIntervention);
+//                TextView intervention = popupView.findViewById(R.id.pestIntervention);
 
+                Disease_info selectedItem = items.get(position);
 
-//                image.setImageBitmap(selectedItem.Image);
-//                name.setText(selectedItem.name);
-//                scientific.setText(selectedItem.scientific);
+                String imageUrl = url.getBase_url()+"LoginRegister/images/disease_images/" + items.get(position).getImage();
+                Glide.with(view.getContext())
+                        .load(imageUrl)
+                        .into(image);
+
+                name.setText(selectedItem.getDisease_name());
+                //                scientific.setText(selectedItem.scientific);
 //                order.setText(selectedItem.order);
 //                family.setText(selectedItem.family);
-//                description.setText(selectedItem.description);
+                description.setText(selectedItem.getDescription());
 //                intervention.setText(selectedItem.intervention);
 
 

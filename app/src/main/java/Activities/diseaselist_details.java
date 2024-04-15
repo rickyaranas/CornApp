@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import Domains.CategoryDomain;
 import Domains.DiseaseList_Domain;
@@ -23,8 +24,10 @@ public class diseaselist_details extends AppCompatActivity {
 
     private TextView disease_name, location,date, severity, description;
     private DiseaseList_Domain items;
+    private PopularDomain item;
     private ImageView list_pic, locbtn, backbtn;
     private EditText googleanchor;
+    base_url url = base_url.getInstance();
 
 
     @Override
@@ -39,12 +42,13 @@ public class diseaselist_details extends AppCompatActivity {
         items = (DiseaseList_Domain) getIntent().getSerializableExtra("object");
 
         disease_name.setText(items.getDisease_name());
-        description.setText(items.getDescription());
+        //description.setText(item.getDescription());
+
         location.setText("Location: "+items.getLocation());
         date.setText("Date: "+items.getDate());
-        severity.setText("Disease Severity Level: "+items.getSeverity());
+//        severity.setText("Disease Severity Level: "+items.getSeverity());
 
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/scanned_image/" + items.getImage();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/scanned_image/" + items.getImage();
 
         Glide.with(this)
                 .load(imageUrl)
@@ -69,7 +73,7 @@ public class diseaselist_details extends AppCompatActivity {
         disease_name = findViewById(R.id.disease_name);
         location=findViewById(R.id.location);
         date=findViewById(R.id.date);
-        severity=findViewById(R.id.severity);
+//        severity=findViewById(R.id.severity);
         description=findViewById(R.id.desctxt);
 
         list_pic=findViewById(R.id.list_pic);

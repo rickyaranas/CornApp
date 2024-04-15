@@ -17,14 +17,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.corn.R;
 import com.example.corn.apiController;
+import com.example.corn.apiset;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
 import Adapters.DiseaseList_Adapter;
 import Adapters.PopularAdapter;
 import Adapters.local_farms_adapter;
+import Adapters.municipalty_local_farms_adapter;
+import Domains.AnalysisData;
 import Domains.CategoryDomain;
 import Domains.DiseaseList_Domain;
+import Domains.MunicipalityAnalysis;
 import Domains.PopularDomain;
 import Domains.local_farms_domain;
 import retrofit2.Call;
@@ -32,11 +37,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class localfarms extends AppCompatActivity {
-    private TextView desctxt, titletxt, bedtxt, guidetxt, wifitxt, titletext, diseasename, seecat;
+    private TextView desctxt, total_detected, bedtxt, guidetxt, wifitxt, titletext, diseasename, seecat;
     private CategoryDomain item;
     private ImageView backbtn, picImg, locbtn;
     private RecyclerView local_recycler;
     private RecyclerView.Adapter local_farms_adapter;
+    private RecyclerView.Adapter municipality_local_farms_adapter;
+    base_url url = base_url.getInstance();
 
 
 
@@ -52,7 +59,7 @@ public class localfarms extends AppCompatActivity {
 
         initView();
         setVariableC();
-        processdata();
+        //processdata();
     }
 
     private void setVariableC() {
@@ -60,13 +67,56 @@ public class localfarms extends AppCompatActivity {
 
         titletext.setText(item.getMunicipality());
         desctxt.setText(item.getDescription());
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/local_farms/" + item.getLogo();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/local_farms/" + item.getLogo();
 
         Glide.with(this)
                 .load(imageUrl)
                 .into(picImg);
 
         backbtn.setOnClickListener(v -> finish());
+
+        String municipality = String.valueOf(item.getMunicipality());
+        String apiUrl = url.getBase_url() + "LoginRegister/fetch_for_municipality_analysis.php?location=" + municipality;
+        Log.d("Generated URL farms", apiUrl); // Print the generated URL in Logcat
+
+        apiset apiService = apiController.getInstance().getapi();
+        Call<ArrayList<MunicipalityAnalysis>> call = apiService.getMunicipalityAnalysis(municipality);
+
+        call.enqueue(new Callback<ArrayList<MunicipalityAnalysis>>() {
+            @Override
+            public void onResponse(Call<ArrayList<MunicipalityAnalysis>> call, Response<ArrayList<MunicipalityAnalysis>> response) {
+                if (response.isSuccessful()) {
+                    ArrayList<MunicipalityAnalysis> municipalityAnalysisList = response.body();
+                    if (municipalityAnalysisList != null) {
+                        // Assuming you want to set data from the first item in the list
+
+
+                        // Assuming you have a TextView named textViewResult
+                        int totalCount = 0;
+                        for (MunicipalityAnalysis analysis : municipalityAnalysisList) {
+                            totalCount += analysis.getCount();
+                        }
+                        total_detected.setText("Total Disease Detected: " + totalCount);
+                        municipality_local_farms_adapter = new municipalty_local_farms_adapter(municipalityAnalysisList);
+                        local_recycler.setAdapter(municipality_local_farms_adapter);
+                        // ...
+                    } else {
+                        // Handle empty response or list
+                        total_detected.setText("No data available");
+                    }
+                } else {
+                    // Handle unsuccessful response
+                    total_detected.setText("Failed to retrieve data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<MunicipalityAnalysis>> call, Throwable t) {
+                // Handle failure
+                total_detected.setText("Failed: " + t.getMessage());
+            }
+
+        });
 
         locbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,13 +146,14 @@ public class localfarms extends AppCompatActivity {
         desctxt = findViewById(R.id.desctxt);
         locbtn = findViewById(R.id.locbtn);
         seecat = findViewById(R.id.seecat);
+        total_detected = findViewById(R.id.total_detected);
     }
 
     private void processdata() {
 
         String municipality = String.valueOf(item.getMunicipality());
 
-        String apiUrl = "http://192.168.100.5/LoginRegister/fetch_local_farms.php?municipality=" +municipality;
+        String apiUrl = url.getBase_url()+"LoginRegister/fetch_local_farms.php?municipality=" +municipality;
         Log.d("Generated URL farms", apiUrl); // Print the generated URL in Logcat
         Call<ArrayList<local_farms_domain>> call = apiController
                 .getInstance()

@@ -16,15 +16,14 @@
         android:layout_width="287dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_x="223dp"
-        android:layout_y="178dp"
-        android:text="Sign Up "
+        android:layout_x="47dp"
+        android:layout_y="216dp"
         android:fontFamily="@font/poppins_regular"
+        android:text="Sign Up "
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold" />
-
 
     <EditText
         android:id="@+id/fullname"

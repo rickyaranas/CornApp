@@ -33,7 +33,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/leaf_spot" />
-
                 <ImageView
                     android:id="@+id/backbtn"
                     android:layout_width="37dp"
@@ -44,16 +43,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/back_btn" />
 
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="328dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/backbtn"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/backbtn"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/about" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView12"-->
+<!--                    android:layout_width="45dp"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="328dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/backbtn"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/backbtn"-->
+<!--                    app:layout_constraintVertical_bias="0.0"-->
+<!--                    app:srcCompat="@drawable/about" />-->
 
                 <TextView
                     android:id="@+id/titletext"
@@ -143,12 +142,35 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:textSize="15dp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
 
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:text="TREATMENT" />
+            <TextView
+                android:id="@+id/treatment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
 
             <TextView
                 android:id="@+id/display"
@@ -193,11 +215,12 @@
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_weight="1"
-                    android:textStyle="bold"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="         ADDITIONAL IMAGES -->"
                     android:textColor="@color/black"
-                    android:text="ADDITIONAL IMAGES" />
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"

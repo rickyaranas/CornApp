@@ -31,6 +31,7 @@ public class login extends AppCompatActivity {
     String userId;
     String password;
     id_Holder id = id_Holder.getInstance();
+    base_url url = base_url.getInstance();
 
     private static final String PREF_NAME = "MyPrefs";
     private static final String KEY_LOGGED_IN = "isLoggedIn";
@@ -77,7 +78,7 @@ public class login extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.100.9/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData(url.getBase_url()+"LoginRegister/login.php", "POST", field, data);
 
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {

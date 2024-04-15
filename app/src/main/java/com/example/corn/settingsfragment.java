@@ -59,6 +59,7 @@ public class settingsfragment extends Fragment {
     Bitmap bitmap;
     Bitmap reducedSize;
     private SharedPreferences sharedPreferences;
+    base_url url = base_url.getInstance();
 
 
     private user_info_domain item;
@@ -151,7 +152,7 @@ public class settingsfragment extends Fragment {
     }
 
     public void get_userID(){
-        String apiUrl = "http://192.168.100.9/LoginRegister/fetch_user_data.php?usr_id=" + userId;
+        String apiUrl = url.getBase_url()+"LoginRegister/fetch_user_data.php?usr_id=" + userId;
         Log.d("Generated URL", apiUrl); // Print the generated URL in Logcat
 
         apiset apiService = apiController.getInstance().getapi();
@@ -168,7 +169,7 @@ public class settingsfragment extends Fragment {
                     StringBuilder stringBuilder = new StringBuilder();
                     for (user_info_domain userinfo : userinfos) {
                         String imageName = userinfo.getImage();
-                        String imageUrl = "http://192.168.100.9/LoginRegister/images/user_images/"+imageName; // Adjust this URL according to your server configuration
+                        String imageUrl = url.getBase_url()+"LoginRegister/images/user_images/"+imageName; // Adjust this URL according to your server configuration
                         Log.d("Generated URL3", apiUrl);
                         profile_username.setText(userinfo.getFullname());
 
@@ -214,7 +215,7 @@ public class settingsfragment extends Fragment {
         save = dialogView.findViewById(R.id.signup);
         profile = dialogView.findViewById(R.id.profile_edit);
 
-        String apiUrl = "http://192.168.100.9/LoginRegister/fetch_user_data.php?usr_id=" + userId;
+        String apiUrl = url.getBase_url()+"LoginRegister/fetch_user_data.php?usr_id=" + userId;
         Log.d("Generated URL", apiUrl); // Print the generated URL in Logcat
 
         apiset apiService = apiController.getInstance().getapi();
@@ -231,7 +232,7 @@ public class settingsfragment extends Fragment {
                     StringBuilder stringBuilder = new StringBuilder();
                     for (user_info_domain userinfo : userinfos) {
                         String imageName = userinfo.getImage();
-                        String imageUrl = "http://192.168.100.9/LoginRegister/images/user_images/" + imageName; // Adjust this URL according to your server configuration
+                        String imageUrl = url.getBase_url()+"LoginRegister/images/user_images/" + imageName; // Adjust this URL according to your server configuration
                         Log.d("Generated URL3", apiUrl);
                         fullname.setText(userinfo.getFullname());
 //                        email.setText(userinfo.getEmail());
@@ -311,7 +312,7 @@ public class settingsfragment extends Fragment {
                                     ;
 
                                     Log.d("EditTextDebug", "fullname: " + userId);
-                                    PutData putData = new PutData("http://192.168.100.9/LoginRegister/update_user.php?user_id=" + userId, "POST", field, data);
+                                    PutData putData = new PutData(url.getBase_url()+"LoginRegister/update_user.php?user_id=" + userId, "POST", field, data);
                                     if (putData.startPut()) {
                                         if (putData.onComplete()) {
                                             progress.setVisibility(View.GONE);

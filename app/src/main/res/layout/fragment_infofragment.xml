@@ -42,13 +42,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Welcome Back"
+                            android:text="Welcome"
                             android:fontFamily="@font/poppins_regular"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toEndOf="@+id/imageView7"
+
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.146" />
 
@@ -61,10 +61,9 @@
                             android:text="EDWIN POVADORA"
                             android:fontFamily="@font/poppins_regular"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toEndOf="@+id/imageView7"
+
                             app:layout_constraintTop_toTopOf="@+id/textView6"
                             app:layout_constraintVertical_bias="0.27" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -83,50 +82,50 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/search_background"
+<!--                    <EditText-->
+<!--                        android:id="@+id/editTextTextPersonName"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:background="@drawable/search_background"-->
 
-                        android:drawablePadding="16dp"
-                        android:ems="10"
-                        android:gravity="center_vertical"
+<!--                        android:drawablePadding="16dp"-->
+<!--                        android:ems="10"-->
+<!--                        android:gravity="center_vertical"-->
 
-                        android:inputType="text"
-                        android:paddingBottom="16dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="16dp" />
+<!--                        android:inputType="text"-->
+<!--                        android:paddingBottom="16dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textColorHint="@color/black"-->
+<!--                        android:textSize="16dp" />-->
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="50dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1">
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:id="@+id/imageView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/search_icon"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.703"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageView8"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/search_icon"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintHorizontal_bias="0.703"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintVertical_bias="0.0" />-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -145,14 +144,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/seealTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
 
-                        android:text="see all"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

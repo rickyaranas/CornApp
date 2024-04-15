@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import Domains.PopularDomain;
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
 
     ArrayList<PopularDomain> items;
+    base_url url = base_url.getInstance();
 //    DecimalFormat formatter;
 
     public PopularAdapter(ArrayList<PopularDomain> items) {
@@ -43,7 +45,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.titleTxt.setText(items.get(position).getDisease_name());
         holder.locationTxt.setText(items.get(position).getLocation());
 
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/disease_images/" + items.get(position).getPic();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/disease_images/" + items.get(position).getPic();
         Glide.with(holder.titleTxt.getContext())
                 .load(imageUrl)
                 .transform(new CenterCrop(), new RoundedCorners(40))

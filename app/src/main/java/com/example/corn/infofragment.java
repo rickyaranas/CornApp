@@ -35,6 +35,7 @@ public class infofragment extends Fragment {
     private RecyclerView recyclerViewPopular, recyclerViewCategory;
     private user_info_domain item;
     TextView username, username_tv;
+    base_url url = base_url.getInstance();
 
     String userId;
     @Override
@@ -62,7 +63,7 @@ public class infofragment extends Fragment {
 
     }
     public void get_userID(){
-        String apiUrl = "http://192.168.100.9/LoginRegister/fetch_user_data.php?user_id=" + userId;
+        String apiUrl = url.getBase_url()+"LoginRegister/fetch_user_data.php?user_id=" + userId;
         Log.d("Generated URL", apiUrl); // Print the generated URL in Logcat
 
         apiset apiService = apiController.getInstance().getapi();

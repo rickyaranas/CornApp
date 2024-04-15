@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.corn.R;
+import com.example.corn.base_url;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import Domains.DiseaseList_Domain;
 public class DiseaseList_Adapter extends RecyclerView.Adapter<DiseaseList_Adapter.ViewHolder> {
 
     ArrayList<DiseaseList_Domain> items;
+    base_url url = base_url.getInstance();
 
     public DiseaseList_Adapter(ArrayList<DiseaseList_Domain>items){
         this.items = items;
@@ -37,11 +39,11 @@ public class DiseaseList_Adapter extends RecyclerView.Adapter<DiseaseList_Adapte
     @Override
     public void onBindViewHolder(@NonNull DiseaseList_Adapter.ViewHolder holder, int position) {
         holder.disease_name.setText(items.get(position).getDisease_name());
-        holder.severity.setText(items.get(position).getSeverity());
+        holder.severity.setText("Confidence Level: "+items.get(position).getConfidence_level());
         holder.location.setText(items.get(position).getLocation());
         holder.date.setText(items.get(position).getDate());
 
-        String imageUrl = "http://192.168.100.9/LoginRegister/images/scanned_image/" + items.get(position).getImage();
+        String imageUrl = url.getBase_url()+"LoginRegister/images/scanned_image/" + items.get(position).getImage();
         Glide.with(holder.disease_name.getContext())
                 .load(imageUrl)
                 .transform(new CenterCrop(), new RoundedCorners(40))
@@ -72,7 +74,7 @@ public class DiseaseList_Adapter extends RecyclerView.Adapter<DiseaseList_Adapte
             location=itemView.findViewById(R.id.location);
             date=itemView.findViewById(R.id.date);
 
-            list_pic=itemView.findViewById(R.id.list_pic);
+            list_pic=itemView.findViewById(R.id.carouselView);
 
         }
     }
