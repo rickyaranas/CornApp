@@ -2,27 +2,20 @@ package com.example.corn;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,10 +24,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -43,13 +34,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.List;
 
 import Domains.ScannedDisease_Domain;
 import retrofit2.Call;
@@ -58,7 +47,8 @@ import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
+import java.util.Locale;
 
 public class Detect extends AppCompatActivity {
 
@@ -88,9 +78,9 @@ public class Detect extends AppCompatActivity {
     String location;
 
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
-
     private FusedLocationProviderClient fusedLocationClient;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    location_Tracker track = location_Tracker.getInstance();
 
     RelativeLayout loading;
 
@@ -116,7 +106,7 @@ public class Detect extends AppCompatActivity {
         userId = getIntent().getStringExtra("userID");
 
         yolOv5TFLiteDetector = new YOLOv5TFLiteDetector();
-        yolOv5TFLiteDetector.setModelFile("best-fp16.tflite");
+        yolOv5TFLiteDetector.setModelFile("best-fp16_old_1.tflite");
         yolOv5TFLiteDetector.initialModel(this);
 
         //for the bounding box
@@ -131,6 +121,39 @@ public class Detect extends AppCompatActivity {
 
         bitmap = hold.getImage();
         scaledBitmap = Bitmap.createScaledBitmap(bitmap,imageSize,imageSize,false);
+
+        //boolean isLoggedIn = sharedPreferences.getBoolean(KEY_LOGGED_IN, false);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Request the missing permissions
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // Permissions are granted, you can call getLastLocation()
+            fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    // Got last known location. In some rare situations, this can be null.
+                    if (location != null) {
+                        // Logic to handle location object
+//                        locationStr = "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
+//                        System.out.println("LOCATION: "+locationStr);
+
+                        Geocoder geocoder = new Geocoder(Detect.this, Locale.getDefault());
+                        List<Address> addresses = null;
+                        try {
+                            addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        assert addresses != null;
+                        Address address = addresses.get(0);
+                        track.set_location(address.getAddressLine(0), address.getLocality(), address.getAdminArea(), address.getCountryName());
+
+
+                    }
+                }
+            });
+        }
 
         predict();
 
@@ -160,13 +183,13 @@ public class Detect extends AppCompatActivity {
         Call<ArrayList<ScannedDisease_Domain>> call = null;
 
         for (Recognition recognition : recognitions) {
-            if (recognition.getConfidence() > 0.50
-            ) {
+            if (recognition.getConfidence() > 0.50) {
+
                 has_predicted = true;
                 RectF location = recognition.getLocation();
                 canvas.drawRect(location, boxpaint);
 
-                confidence = String.format(" %.0f%% ", recognition.getConfidence() * 100.0f);
+                confidence = String.format(" %.2f%% ", recognition.getConfidence() * 100.0f);
                 canvas.drawText(recognition.getLabelName() + ": " + confidence, location.left, location.top, texpaint);
 
                 Id = String.valueOf(recognition.getLabelId());
@@ -179,89 +202,7 @@ public class Detect extends AppCompatActivity {
                 apiset apiService = apiController.getInstance().getapi();
                 call = apiService.getDisease(Id);
 
-                 finalConfidence = confidence;
-//                call.enqueue(new Callback<ArrayList<ScannedDisease_Domain>>() {
-//                    @Override
-//                    public void onResponse(Call<ArrayList<ScannedDisease_Domain>> call, Response<ArrayList<ScannedDisease_Domain>> response) {
-//                        if (response.isSuccessful()) {
-//                            ArrayList<ScannedDisease_Domain> diseases = response.body();
-//
-//                            for (ScannedDisease_Domain disease : diseases) {
-//                                TextView d = findViewById(R.id.d);
-//                                d.setText(""+userId);
-//                                titletxt.setText("Disease Name: " + disease.getDisease_name());
-//                                description.setText("" + disease.getDescription());
-//                                rectxt.setText("" + disease.getTreatment());
-//
-//                                Date date_1 = new Date();
-//                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//                                currentDate = dateFormat.format(date_1);
-//                                dateTV.setText("Date: "+currentDate);
-//
-//                                byte[] imageBytes = imageViewToBy(mutableBitmap);
-//
-//                                final String user_id, disease_name, location, date, image, confidence_d;
-//                                user_id = d.getText().toString();
-//                                disease_name = disease.getDisease_name();
-//
-//                                location = address;
-//                                date = currentDate;
-//                                confidence_d = finalConfidence.toString();
-//
-//                                Handler handler = new Handler();
-//                                handler.post(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        String[] field = new String[6];
-//                                        field[0] = "user_id";
-//                                        field[1] = "disease_name";
-//                                        field[2] = "location";
-//                                        field[3] = "date";
-//                                        field[4] = "image_name";
-//                                        field[5] = "confidence_level";
-//
-//                                        String[] data = new String[6];
-//                                        data[0] = user_id;
-//                                        data[1] = disease_name;
-//                                        data[2] = location;
-//                                        data[3] = date;
-//                                        data[4] = Base64.encodeToString(imageBytes, Base64.DEFAULT);;
-//                                        data[5] = finalConfidence;
-//
-//                                        Log.d("EditTextDebug", "fullname: " + data[0]+data[1]+data[2]+data[3]);
-//                                        Log.d("edwin,","user_id: " + data[0]);
-//                                        Log.d("edwin,","image_name: " + data[2]);
-//                                        Log.d("edwin,","image_name: " + mutableBitmap);
-//
-//                                        PutData putData = new PutData(url.getBase_url()+"LoginRegister/madam.php", "POST", field, data);
-//                                        if (putData.startPut()) {
-//                                            if (putData.onComplete()) {
-//                                                String result = putData.getResult();
-//
-//                                                if (result.contains("Sign Up Success")) {
-//                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-//                                                    Log.i("PutData", result);
-////                                                    Intent ed = new Intent(getApplicationContext(),login.class);
-////                                                    startActivity(ed);
-//
-//
-//                                                } else {
-//                                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-//                                                    Log.d("EditTextDebug", "last: " + result);
-//                                                }
-//
-//                                            }
-//                                        }
-//
-//                                    }
-//                                });
-//
-//                            }
-//                            scrollView.scrollTo(0, 0);
-//                        } else {
-//                        }
-//                    }
-
+                finalConfidence = confidence;
                 try {
                     URL url = new URL(apiUrl);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -274,6 +215,8 @@ public class Detect extends AppCompatActivity {
 
 
             }
+
+
         }
 
         if(has_predicted) {
@@ -295,7 +238,7 @@ public class Detect extends AppCompatActivity {
                             Log.d("edwin,", "locations: " + location);
 
                             Date date_1 = new Date();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                             currentDate = dateFormat.format(date_1);
                             dateTV.setText("Date: " + currentDate);
 
@@ -370,6 +313,74 @@ public class Detect extends AppCompatActivity {
                 }
             });
             has_predicted = false;
+
+        }
+        else{
+
+            location = locationa.getTown();
+            Date date_1 = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            currentDate = dateFormat.format(date_1);
+            dateTV.setText("Date: " + currentDate);
+
+            byte[] imageBytes = imageViewToBy(mutableBitmap);
+
+            final String user_id,  locations, date, image;
+
+            user_id = String.valueOf(id.retrieve_id());
+
+
+            locations = location;
+            date = currentDate;
+
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    String[] field = new String[4];
+                    field[0] = "user_id";
+                    field[1] = "location";
+                    field[2] = "date";
+                    field[3] = "image_name";
+
+
+                    String[] data = new String[4];
+                    data[0] = user_id;
+                    data[1] = locations;
+                    data[2] = date;
+                    data[3] = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+
+                    //Log.d("EditTextDebug", "fullname: " + data[0] + data[1] + data[2] + data[3]);
+                    Log.d("edwin,", "user_id: " + data[0]);
+                    Log.d("edwin,", "locations: " + data[1]);
+                    Log.d("edwin,", "date: " + data[2]);
+                    Log.d("edwin,", "image_name: " + mutableBitmap);
+
+                    PutData putData = new PutData(url.getBase_url() + "LoginRegister/unidentified.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+
+                            if (result.contains("Sign Up Success")) {
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                Log.i("PutData", result);
+//                                                    Intent ed = new Intent(getApplicationContext(),login.class);
+//                                                    startActivity(ed);
+
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                Log.d("EditTextDebug", "last: " + result);
+                            }
+
+                        }
+                    }
+
+                }
+            });
+
 
         }
 

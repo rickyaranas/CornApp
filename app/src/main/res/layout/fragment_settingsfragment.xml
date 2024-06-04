@@ -58,6 +58,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/emailtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -184,35 +185,35 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_baseline_lock_24" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:padding="12dp"-->
+<!--                        android:src="@drawable/ic_baseline_lock_24" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:text="Contact &amp; Us"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/white" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:text="Contact &amp; Us"-->
+<!--                        android:fontFamily="@font/poppins_regular"-->
+<!--                        android:textColor="@color/white" />-->
 
-                    <ImageView
-                        android:id="@+id/contactusbtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_right" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/contactusbtn"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/arrow_right" />-->
 
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -229,12 +230,12 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="40dp"
-                        android:text="About Us"
+                        android:text="App Developers"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white" />
 
                     <ImageView
-                        android:id="@+id/aboutusbtn"
+                        android:id="@+id/aboutbtns"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -260,11 +261,12 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="40dp"
-                        android:text="About App"
+                        android:text="About the app App"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white" />
 
                     <ImageView
+                        android:id="@+id/contact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

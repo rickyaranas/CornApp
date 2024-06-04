@@ -177,7 +177,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/local_recycler"
                     android:layout_width="363dp"
-                    android:layout_height="102dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="10dp"
                     android:clipToPadding="false"
 
@@ -208,14 +208,14 @@
 <!--                    android:textColor="@color/black"-->
 <!--                    android:text="CORNJEMA" />-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button2"
-                    style="@android:style/Widget.Button"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#60b49c"
-                    android:text="VISIT" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/button2"-->
+<!--                    style="@android:style/Widget.Button"-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#60b49c"-->
+<!--                    android:text="VISIT" />-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

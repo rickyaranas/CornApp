@@ -17,6 +17,8 @@
 package com.example.corn;
 
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -26,6 +28,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -35,6 +40,8 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
 import com.example.corn.customview.OverlayView;
 import com.example.corn.env.BorderedText;
 import com.example.corn.env.ImageUtils;
@@ -43,6 +50,9 @@ import com.example.corn.tflite.Classifier;
 import com.example.corn.tflite.DetectorFactory;
 import com.example.corn.tflite.YoloV5Classifier;
 import com.example.corn.tracking.MultiBoxTracker;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.ByteArrayOutputStream;
@@ -98,6 +108,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 //    String address;
     id_Holder id = id_Holder.getInstance();
     base_url url = base_url.getInstance();
+
+    private FusedLocationProviderClient fusedLocationClient;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    location_Tracker tracks = location_Tracker.getInstance();
+
 
 
 
@@ -163,6 +178,38 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 });
 
         tracker.setFrameConfiguration(previewWidth, previewHeight, sensorOrientation);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Request the missing permissions
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // Permissions are granted, you can call getLastLocation()
+            fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    // Got last known location. In some rare situations, this can be null.
+                    if (location != null) {
+                        // Logic to handle location object
+//                        locationStr = "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
+//                        System.out.println("LOCATION: "+locationStr);
+
+                        Geocoder geocoder = new Geocoder(DetectorActivity.this, Locale.getDefault());
+                        List<Address> addresses = null;
+                        try {
+                            addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        assert addresses != null;
+                        Address address = addresses.get(0);
+                        tracks.set_location(address.getAddressLine(0), address.getLocality(), address.getAdminArea(), address.getCountryName());
+
+
+                    }
+                }
+            });
+        }
     }
     public void storeCurrentDateTime() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -317,7 +364,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                                 String pest_name = result.getTitle();
                                 float confidence = result.getConfidence();
-                                String confidenceStr = String.format("%.2f",confidence * 100.0f );
+                                String confidenceStr = String.format(" %.2f%% ",confidence * 100.0f );
                                 showPestId(confidenceStr,pest_name);
                                 storeCurrentDateTime();
                                 String date = currentDate;

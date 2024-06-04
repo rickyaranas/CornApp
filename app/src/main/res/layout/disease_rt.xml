@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="110dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -9,40 +9,40 @@
         android:layout_width="350dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_x="14dp"
-        android:layout_y="22dp"
+        android:layout_x="21dp"
+        android:layout_y="7dp"
         android:background="@drawable/custom_edittext"
         app:cardCornerRadius="25dp">
 
         <!--        <TextView-->
-<!--            android:id="@+id/severity"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="140dp"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:layout_x="151dp"-->
-<!--            android:layout_y="52dp"-->
-<!--            android:text="Disease Severity Level:" />-->
+        <!--            android:id="@+id/severity"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="140dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:layout_x="151dp"-->
+        <!--            android:layout_y="52dp"-->
+        <!--            android:text="Disease Severity Level:" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/location"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="140dp"-->
-<!--            android:layout_marginTop="80dp"-->
-<!--            android:layout_x="151dp"-->
-<!--            android:layout_y="52dp"-->
-<!--            android:text="Location :" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/location"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="140dp"-->
+        <!--            android:layout_marginTop="80dp"-->
+        <!--            android:layout_x="151dp"-->
+        <!--            android:layout_y="52dp"-->
+        <!--            android:text="Location :" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/date"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="140dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:layout_x="151dp"-->
-<!--            android:layout_y="52dp"-->
-<!--            android:text="Date :" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/date"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="140dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_x="151dp"-->
+        <!--            android:layout_y="52dp"-->
+        <!--            android:text="Date :" />-->
 
         <TextView
             android:id="@+id/disease_name"

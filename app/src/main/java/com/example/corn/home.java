@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,11 +17,9 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.c.meowbottomnavigation.MeowBottomNavigation;
@@ -48,6 +44,9 @@ public class home extends AppCompatActivity {
     FloatingActionButton scanButton;
     String userId;
     id_Holder id = id_Holder.getInstance();
+    private static final long DOUBLE_TAP_INTERVAL = 2000; // 2 seconds interval for double tap
+    private long lastBackPressedTime = 0;
+
     private static final String PREF_NAME = "MyPrefs";
 
     @Override
@@ -59,22 +58,7 @@ public class home extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         userId = sharedPreferences.getString("userId", null);
         id.hold_id(Integer.parseInt(userId));
-     //   Log.i("UserId", userId);
-//        if (getIntent() != null) {
-//            // Retrieve userId from the Intent
-//           userId = getIntent().getStringExtra("userId");
-//            // Check if userId is not null
-//            if (userId != null) {
-//                // Use userId as needed
-//                Log.i("UserId", userId);
-//            } else {
-//                // Handle the case where userId is null
-//                Log.e("UserId", "userId is null");
-//            }
-//        } else {
-//            // Handle the case where Intent is null
-//            Log.e("Intent", "Intent is null");
-//        }
+
         replaceFragment(new homefragment());
 
         scanButton = findViewById(R.id.scanButton);
@@ -120,6 +104,19 @@ public class home extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastBackPressedTime < DOUBLE_TAP_INTERVAL) {
+            // If the interval between taps is less than the predefined interval,
+            // exit the app
+            super.onBackPressed();
+        } else {
+            // Otherwise, update the lastBackPressedTime and show a Toast message
+            lastBackPressedTime = currentTime;
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -150,7 +147,7 @@ public class home extends AppCompatActivity {
 
     private static final boolean TF_OD_API_IS_QUANTIZED = false;
 
-    private static final String TF_OD_API_MODEL_FILE = "best-fp16.tflite";
+    private static final String TF_OD_API_MODEL_FILE = "best-fp16_old_1.tflite";
     private static final String TF_OD_API_LABELS_FILE = "customclasses.txt";
     // Minimum detection confidence to track a detection.
     private static final boolean MAINTAIN_ASPECT = true;

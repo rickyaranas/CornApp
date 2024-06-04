@@ -56,7 +56,7 @@ public class register extends AppCompatActivity {
         TIpassword = findViewById(R.id.password);
         progress=findViewById(R.id.progress);
         Tconfirmpass=findViewById(R.id.confirmpass);
-        profile_pic = findViewById(R.id.profile_pic);
+        //profile_pic = findViewById(R.id.profile_pic);
 
 
         progress.setVisibility(View.GONE);
@@ -89,8 +89,8 @@ public class register extends AppCompatActivity {
                     if (isValidEmail(email)) {
                         if (isStrongPassword(Tpassword)) {
                         if (Tpassword.equals(confirmpass)) {
-                            if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
-                                byte [] image = imageViewToBy(bitmap);
+//                            if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
+//                                byte [] image = imageViewToBy(bitmap);
 
                                 progress.setVisibility(View.VISIBLE);
 
@@ -98,19 +98,19 @@ public class register extends AppCompatActivity {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        String[] field = new String[4];
+                                        String[] field = new String[3];
                                         field[0] = "fullname";
                                         field[1] = "email";
                                         field[2] = "password";
-                                        field[3] = "user_image";
+                                       // field[3] = "user_image";
 
                                         Log.d("EditTextDebug", "fullname: " + field[0]);
 
-                                        String[] data = new String[4];
+                                        String[] data = new String[3];
                                         data[0] = fullname;
                                         data[1] = email;
                                         data[2] = password;
-                                        data[3] = Base64.encodeToString(image, Base64.DEFAULT);
+                                       // data[3] = Base64.encodeToString(image, Base64.DEFAULT);
                                         ;
 
                                         Log.d("EditTextDebug", "fullname: " + data[0]);
@@ -143,10 +143,10 @@ public class register extends AppCompatActivity {
                                     }
                                 });
 
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Please Select you Profile Image", Toast.LENGTH_SHORT).show();
-
-                            }
+//                            } else {
+//                                Toast.makeText(getApplicationContext(), "Please Select you Profile Image", Toast.LENGTH_SHORT).show();
+//
+//                            }
 
                         } else {
 

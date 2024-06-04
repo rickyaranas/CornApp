@@ -151,7 +151,7 @@
 
             <ImageView
                 android:id="@+id/imageView32"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="40dp"
@@ -167,7 +167,7 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="40dp"

@@ -186,10 +186,16 @@ public class listfragment extends Fragment {
         }
     }
     private void processdata() {
+        String user_id = String.valueOf(id.retrieve_id());
+        String apiUrl = url.getBase_url() + "LoginRegister/disease_list_fetch.php?user_id=" + user_id;
+        Log.d("Generated URL farms", apiUrl); // Print the generated URL in Logcat
+
+        apiset apiService = apiController.getInstance().getapi();
+        //Call<ArrayList<AnalysisData>> call = apiService.getDiseaseAnalysis(user_id);
         Call<ArrayList<DiseaseList_Domain>> call = apiController
                 .getInstance()
                 .getapi()
-                .getDiseaseData();
+                .getDiseaseData(user_id);
 
         call.enqueue(new Callback<ArrayList<DiseaseList_Domain>>() {
             @Override

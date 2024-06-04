@@ -54,16 +54,16 @@
         android:inputType="textPassword"
         app:endIconMode="password_toggle" />
 
-    <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="71dp"
-        android:layout_height="52dp"
-        android:layout_centerHorizontal="true"
-        android:layout_x="50dp"
-        android:layout_y="578dp"
-        android:onClick="selectImage"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile" />
+<!--    <ImageView-->
+<!--        android:id="@+id/profile_pic"-->
+<!--        android:layout_width="71dp"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_x="50dp"-->
+<!--        android:layout_y="578dp"-->
+<!--        android:onClick="selectImage"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/profile" />-->
 
     <TextView
         android:id="@+id/conpasstv"

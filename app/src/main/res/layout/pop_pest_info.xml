@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
 <!--        <LinearLayout-->
@@ -108,13 +108,13 @@
             android:layout_height="30dp"
             android:layout_marginTop="30dp"
             android:text="Description"
-            android:textColor="@color/charcoal"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:justificationMode="inter_word"
             android:padding="5dp"

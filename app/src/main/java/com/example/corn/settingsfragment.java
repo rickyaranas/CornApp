@@ -2,6 +2,9 @@ package com.example.corn;
 
 import static android.app.Activity.RESULT_OK;
 
+import static androidx.camera.core.impl.utils.ContextUtil.getApplicationContext;
+import static com.example.corn.register.imageViewToBy;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -45,7 +48,7 @@ import retrofit2.Response;
 
 public class settingsfragment extends Fragment {
 
-  private ImageView aboutusbtn, contactusbtn, profile_pic, logout, profile;
+  private ImageView aboutbtns, contact, profile_pic, logout, profile;
     private AlertDialog alertDialog;
     ProgressBar progress;
     EditText fullname;
@@ -54,7 +57,7 @@ public class settingsfragment extends Fragment {
     EditText confirmpassword;
     String emailD;
 
-       TextView profile_username;
+       TextView profile_username, emailtv;
       Button edit,save;
     Bitmap bitmap;
     Bitmap reducedSize;
@@ -69,12 +72,14 @@ public class settingsfragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_settingsfragment, container, false);
-        aboutusbtn = view.findViewById(R.id.aboutusbtn);
-        contactusbtn = view.findViewById(R.id.contactusbtn);
+//        aboutusbtn = view.findViewById(R.id.aboutusbtn);
+        contact = view.findViewById(R.id.contact);
         profile_pic = view.findViewById(R.id.profile_pic);
         profile_username = view.findViewById(R.id.profile_username);
+        emailtv = view.findViewById(R.id.emailtv);
         logout = view.findViewById(R.id.logout);
         edit = view.findViewById(R.id.edit);
+        aboutbtns = view.findViewById(R.id.aboutbtns);
 
         userId = getArguments().getString("userId");
         get_userID();
@@ -89,14 +94,15 @@ public class settingsfragment extends Fragment {
 
             }
         });
-        aboutusbtn.setOnClickListener(new View.OnClickListener() {
+        aboutbtns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(requireContext(), about_us.class);
                 startActivity(intent);
             }
         });
-        contactusbtn.setOnClickListener(new View.OnClickListener() {
+
+        contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(requireContext(),contactus.class);
@@ -172,6 +178,7 @@ public class settingsfragment extends Fragment {
                         String imageUrl = url.getBase_url()+"LoginRegister/images/user_images/"+imageName; // Adjust this URL according to your server configuration
                         Log.d("Generated URL3", apiUrl);
                         profile_username.setText(userinfo.getFullname());
+                        emailtv.setText(userinfo.getEmail());
 
                         Glide.with(requireContext())
                                 .load(imageUrl)
@@ -205,8 +212,8 @@ public class settingsfragment extends Fragment {
 
         fullname = dialogView.findViewById(R.id.fullname);
 //        email = dialogView.findViewById(R.id.email);
-        password = dialogView.findViewById(R.id.password);
-        confirmpassword = dialogView.findViewById(R.id.confirmpass);
+        //password = dialogView.findViewById(R.id.password);
+       // confirmpassword = dialogView.findViewById(R.id.confirmpass);
         progress=dialogView.findViewById(R.id.progress);
         progress.setVisibility(dialogView.GONE);
         // Initialize other EditText fields
@@ -237,12 +244,6 @@ public class settingsfragment extends Fragment {
                         fullname.setText(userinfo.getFullname());
 //                        email.setText(userinfo.getEmail());
                         emailD = (userinfo.getEmail());
-
-//                        Glide.with(requireContext())
-//                                .load(imageUrl)
-//                                .circleCrop()
-//                                .into(profile);
-
                     }
 
 
@@ -275,18 +276,65 @@ public class settingsfragment extends Fragment {
                 final String Tfullname, Temail, Tpassword,Tconfirmpass;
                 Tfullname = fullname.getText().toString();
                 Temail = emailD;
-                Tpassword = password.getText().toString();
-                Tconfirmpass = confirmpassword.getText().toString();
-//                byte [] image = imageViewToBy(bitmap);
+//                Tpassword = password.getText().toString();
+//
+//                Log.d("EditTextDebug", "fullname: " + Tfullname);
+//                Log.d("EditTextDebug", "email: " + Temail);
+//                Log.d("EditTextDebug", "password: " + Tpassword);
 
-                Log.d("EditTextDebug", "fullname: " + Tfullname);
-                Log.d("EditTextDebug", "email: " + Temail);
-                Log.d("EditTextDebug", "password: " + Tpassword);
+//                if(!Tfullname.equals("") && !password.equals("")){
+//                       if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
+//                           byte[] image = imageViewToBy(bitmap);
+//
+//                           Handler handler = new Handler();
+//                           handler.post(new Runnable() {
+//                               @Override
+//                               public void run() {
+//                                   String[] field = new String[2];
+//
+//                                    field[0] = "email";
+//                                    field[1] = "password";
+//
+//                                    String[] data = new String[2];
+//                                    data[0] = Temail;
+//                                   data[1] = Tpassword;
+//                                   Log.d("EditTextDebug", "last: email ni : " + Temail);
+//
+//                                   PutData putData = new PutData(url.getBase_url()+"LoginRegister/login.php", "POST", field, data);
+//
+//                                   if (putData.startPut()) {
+//                                       if (putData.onComplete()) {
+//
+//                                           String result = putData.getResult();
+//
+//                                           if(result.contains("Successfully")) {
+//                                               Toast.makeText(getActivity(),"Okay sysaaa"+result,Toast.LENGTH_SHORT).show();
+//                                               Log.d("EditTextDebug", "last: OKiiii login" + result);
+//
+//                                           }
+//                                           else {
+//                                               Toast.makeText(getActivity(),result,Toast.LENGTH_SHORT).show();
+//                                               Log.d("EditTextDebug", "last else: " + result);
+//                                           }
+//
+//                                       }
+//                                   }
+//
+//
+//
+//                               }
+//                           });
+//                       }else{
+//                           Toast.makeText(getActivity(), "Please Select you Profile Image", Toast.LENGTH_SHORT).show();
+//                       }
+//                }else{
+//                    Toast.makeText(getActivity(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
+//                }
 
 
-                if(!Tfullname.equals("") && !Temail.equals("") && !Tpassword.equals("")) {
-                    if (isStrongPassword(Tpassword)) {
-                    if (Tpassword.equals(Tconfirmpass)) {
+                if(!Tfullname.equals("")) {
+//                    if (isStrongPassword(Tpassword)) {
+//                    if (Tpassword.equals(Tconfirmpass)) {
                         if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
                             byte[] image = imageViewToBy(bitmap);
 
@@ -296,19 +344,19 @@ public class settingsfragment extends Fragment {
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    String[] field = new String[4];
+                                    String[] field = new String[2];
                                     field[0] = "fullname";
-                                    field[1] = "email";
-                                    field[2] = "password";
-                                    field[3] = "user_image";
+//                                    field[1] = "email";
+//                                    field[2] = "password";
+                                    field[1] = "user_image";
 
                                     Log.d("EditTextDebug", "fullname: " + field[0]);
 
-                                    String[] data = new String[4];
+                                    String[] data = new String[2];
                                     data[0] = Tfullname;
-                                    data[1] = Temail;
-                                    data[2] = Tpassword;
-                                    data[3] = Base64.encodeToString(image, Base64.DEFAULT);
+//                                    data[1] = Temail;
+//                                    data[2] = Tpassword;
+                                    data[1] = Base64.encodeToString(image, Base64.DEFAULT);
                                     ;
 
                                     Log.d("EditTextDebug", "fullname: " + userId);
@@ -324,6 +372,7 @@ public class settingsfragment extends Fragment {
                                                 Log.i("PutData", result);
                                                 Intent ed = new Intent(getActivity(), home.class);
                                                 startActivity(ed);
+
 
 
                                             } else {
@@ -346,21 +395,25 @@ public class settingsfragment extends Fragment {
 
 
                         }
-                    else {
-                        Toast.makeText(getActivity(), "The passwords aren't the same!", Toast.LENGTH_SHORT).show();
-                        confirmpassword.setError("Passwords do not match");
-                        confirmpassword.setText("");
-                    }
-                    } else {
-                        // Password is not strong
-                        Toast.makeText(getActivity(), "Password must be at least 8 characters long and contains at least one digit", Toast.LENGTH_LONG).show();
-                        password.setError("Password must be at least 8 characters and one digit");
-                        password.setText("");
-                    }
-                }
+//                    else {
+//                        Toast.makeText(getActivity(), "The passwords aren't the same!", Toast.LENGTH_SHORT).show();
+//                        confirmpassword.setError("Passwords do not match");
+//                        confirmpassword.setText("");
+//                    }
+//                    } else {
+//                        // Password is not strong
+//                        Toast.makeText(getActivity(), "Password must be at least 8 characters long and contains at least one digit", Toast.LENGTH_LONG).show();
+//                        password.setError("Password must be at least 8 characters and one digit");
+//                        password.setText("");
+//
+//                      }
+
+
                 else {
                     Toast.makeText(getActivity(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
                 }
+
+
 
 
             }

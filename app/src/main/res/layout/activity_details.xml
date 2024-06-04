@@ -143,10 +143,12 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
+                android:justificationMode="inter_word"
                 android:textSize="15dp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
-                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
+                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates."
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -168,9 +170,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:textSize="15dp"
+                android:justificationMode="inter_word"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
-                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates." />
+                android:text="Gray leaf spot ( GLS) is a foliar fungal disease that affects grasses. In grasses other than maize it is caused by Pyricularia grisea, which only infects perennial ryegrass, tall fescue, and St. Augustine grass in places with warm and rainy climates."
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:id="@+id/display"

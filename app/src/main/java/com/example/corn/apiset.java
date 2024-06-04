@@ -24,7 +24,7 @@ public interface apiset {
     @GET("local_farms_fetch.php")
     Call<ArrayList<CategoryDomain>> getCategoryData();
     @GET("disease_list_fetch.php")
-    Call<ArrayList<DiseaseList_Domain>> getDiseaseData();
+    Call<ArrayList<DiseaseList_Domain>> getDiseaseData(@Query("user_id") String user_id);
 
 //    @GET("fetch_data.php")
 //    Call<ArrayList<ScannedDisease_Domain>> getDisease();

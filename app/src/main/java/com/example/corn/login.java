@@ -87,7 +87,7 @@ public class login extends AppCompatActivity {
 
                                     if(result.contains("Successfully")) {
 
-                                        Toast.makeText(getApplicationContext(),result+"",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"Login Successful ",Toast.LENGTH_SHORT).show();
                                         Log.i("PutData", result);
 
 
@@ -102,6 +102,7 @@ public class login extends AppCompatActivity {
                                         id.hold_id(Integer.parseInt(userId));
                                         setUserLoggedIn(true);
                                         startActivity(intent);
+                                        finish();
                                         Log.i("User ID", userId);
 
 
@@ -119,7 +120,7 @@ public class login extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "wa sud ag koan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });

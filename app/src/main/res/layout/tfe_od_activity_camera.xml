@@ -29,13 +29,16 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             tools:context="org.tensorflow.demo.CameraActivity" />
+
         <ImageView
             android:id="@+id/bgn"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_alignTop="@+id/text_line1"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/background_btn_intro3"
-            android:layout_alignParentBottom="true"/>
+            android:layout_marginTop="-7dp"
+            android:background="@drawable/background_btn_intro3" />
         <LinearLayout
             android:id="@+id/text_line1"
             android:layout_width="match_parent"

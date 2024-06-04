@@ -25,9 +25,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -65,9 +62,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.disease_RT_adapter;
-import Adapters.local_farms_adapter;
 import Domains.Disease_info;
-import Domains.local_farms_domain;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -106,7 +101,7 @@ public abstract class CameraActivity extends AppCompatActivity
   realtime_resultAdapter adapter;
   realtime_resultClicklistener clickListener;
 //  DatabaseHandler database;
-  List<realtime_resultData> list;
+  List<Disease_info> list;
   detection_Tracker track_pest;
 
   id_Holder id = id_Holder.getInstance();
@@ -173,16 +168,19 @@ public abstract class CameraActivity extends AppCompatActivity
     result_recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
     // Result Recycler View
      list = new ArrayList<>();
-    clickListener = new realtime_resultClicklistener() {
-      @Override
-      public void click(int index){
-        Toast.makeText(CameraActivity.this,"clicked item index is "+index, Toast.LENGTH_SHORT).show();
-      }
-    };
-    adapter = new realtime_resultAdapter(list, this.getApplication(),clickListener);
-    recyclerView.setAdapter(adapter);
-    recyclerView.setLayoutManager(
-            new LinearLayoutManager(this));
+    disease_RT_adapters = new disease_RT_adapter((ArrayList<Disease_info>) list);
+    result_recycler.setAdapter(disease_RT_adapters);
+
+//    clickListener = new realtime_resultClicklistener() {
+//      @Override
+//      public void click(int index){
+//        Toast.makeText(CameraActivity.this,"clicked item index is "+index, Toast.LENGTH_SHORT).show();
+//      }
+//    };
+//    adapter = new realtime_resultAdapter(list, this.getApplication(),clickListener);
+//    recyclerView.setAdapter(adapter);
+//    recyclerView.setLayoutManager(
+//            new LinearLayoutManager(this));
 
     startRepeatingTask();
   }
@@ -591,7 +589,7 @@ public abstract class CameraActivity extends AppCompatActivity
   protected void displayRecycler(String Id, String name, float confidence){
 
   }
-  private List<realtime_resultData> getData()
+  private List<Disease_info> getData()
   {
     String current_pest = null;
 
@@ -615,8 +613,9 @@ public abstract class CameraActivity extends AppCompatActivity
         ArrayList<Disease_info> items = response.body();
         if (items != null) {
 
-          disease_RT_adapters = new disease_RT_adapter(items);
-          result_recycler.setAdapter(disease_RT_adapters);
+          list.addAll(items);
+          // Notify the adapter that new data has been added
+          disease_RT_adapters.notifyItemRangeInserted(list.size() - items.size(), items.size());
 
 
           Log.d("AdapterDebug", "Adapter is set successfully");
